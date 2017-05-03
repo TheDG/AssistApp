@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: Desarrollo_de_Software-AssistApp_development
+  database: AssistApp_development
+  username: assistapp
+  password: assist123
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

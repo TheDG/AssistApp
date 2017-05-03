@@ -12,4 +12,12 @@
 ## System dependencies
 Check Gemfile
 ## DB Creation and Initialization
+**Follow this tutorial**
+https://www.tutorialspoint.com/ruby-on-rails/rails-database-setup.htm
+* User[rubyuser]: assistapp
+* Password: assist123
+* Development DB[library_development]: AssistApp_development
+## DB Initialization
+1. rake db:create
+
 ## Deployment instructions
