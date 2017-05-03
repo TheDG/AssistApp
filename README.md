@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Integrantes:
+| Nº Alumno    | Nombre              | Email UC      |
+|:-------------|:--------------------|:--------------|
+| 10208194     | Diego Sinay         | dsinay@uc.cl  |
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Rails Version
+5.1
+## Ruby Version
+2.4.1
+## System dependencies
+Check Gemfile
+## DB Creation and Initialization
+## Deployment instructions
