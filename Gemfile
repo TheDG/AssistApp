@@ -32,6 +32,15 @@ gem 'jbuilder', '~> 2.5'
 #linter
 gem 'rubocop'
 
+#Boostrap
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
+#tooltips
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
