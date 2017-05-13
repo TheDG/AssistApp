@@ -7611,7 +7611,7 @@
    }
  }
  th {
-   text-align: right;
+   //text-align: right;
  }
  @media screen and (max-width: 767px) {
    .table-responsive > .table-bordered {
@@ -8314,6 +8314,7 @@
  body {
      margin-top: 100px;
      background-color: #222;
+     justify-content: left;
  }
 
  @media(min-width:768px) {
