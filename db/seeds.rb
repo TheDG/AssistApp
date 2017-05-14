@@ -8,9 +8,11 @@
 
 
 aux = Teacher.create(name: 'Pedro',
-              last_name: 'Cortes',
-              email: 'Email@uc.cl',
-              rut: '943671137-2',
+                     last_name: 'Cortes',
+                     email: 'Email@uc.cl',
+                     rut: '943671137-2',
+                     password: 'topsecret',
+                     password_confirmation: 'topsecret'
               )
 
 Course.create(teacher_id: aux.id,

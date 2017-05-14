@@ -47,6 +47,11 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 #heroku app
 gem 'rails_12factor'
 
+#auth
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', ref: 'a62faa2c8258ba1c35fe84e147f42c35eccccb8a'
+gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth.git'
+gem 'omniauth'
+gem 'hashie'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
