@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 # Use Puma as the app server
@@ -46,8 +46,10 @@ end
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 #auth
-gem 'devise'
-gem 'devise_token_auth'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', ref: 'a62faa2c8258ba1c35fe84e147f42c35eccccb8a'
+gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth.git'
+gem 'omniauth'
+gem 'hashie'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

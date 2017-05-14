@@ -6,7 +6,7 @@
 | 10208194     | Diego Sinay         | dsinay@uc.cl  |
 
 ## Rails Version
-5.0.2
+5.1
 ## Ruby Version
 2.4.1
 ## System dependencies
