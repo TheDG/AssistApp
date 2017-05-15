@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513220052) do
+ActiveRecord::Schema.define(version: 20170514223101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "assistances", force: :cascade do |t|
+    t.datetime "date"
+    t.boolean "attend"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "courses", force: :cascade do |t|
-    t.string "teacher"
+    t.integer "teacher_id"
     t.string "subject"
     t.string "grade"
     t.string "level"
@@ -24,9 +32,15 @@ ActiveRecord::Schema.define(version: 20170513220052) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "last_name"
+    t.string "rut", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170513220052) do
     t.string "name"
     t.string "last_name"
     t.string "email"
+    t.string "rut", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
