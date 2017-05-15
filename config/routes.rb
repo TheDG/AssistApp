@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :api do
     scope :v1 do
       mount_devise_token_auth_for 'Teacher', at: 'auth'
+      get 'course_students' => 'content#course_students'
     end
   end
 
