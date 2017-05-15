@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514223101) do
+ActiveRecord::Schema.define(version: 20170516212623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20170514223101) do
     t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "course_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20170514223101) do
     t.string "rut", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["rut"], name: "index_students_on_rut", unique: true
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 20170514223101) do
     t.json "tokens"
     t.index ["email"], name: "index_teachers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
+    t.index ["rut"], name: "index_teachers_on_rut", unique: true
   end
 
 end

@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :assistances, only: [:index]
+
   get 'welcome/index'
 
   get 'admin/display'
@@ -29,6 +31,12 @@ Rails.application.routes.draw do
     scope :v1 do
       mount_devise_token_auth_for 'Teacher', at: 'auth'
       get 'course_students' => 'content#course_students'
+      post 'record_assistance' => 'content#record_assistance'
+      delete 'assistance' => 'content#destroy_assistance'
+      delete 'all_assistance' => 'content#destroy_all_assistance'
+      scope 'course_assistance' do
+        get '/:id/:date' => 'content#daily_course_assistance'
+      end
     end
   end
 

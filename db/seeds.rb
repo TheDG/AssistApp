@@ -36,9 +36,4 @@ Course.create(teacher_id: aux.id,
               grade: 'I',
               level: 'a',
               )
-Student.create(name: "aux",
-               rut: "asdasdas1"
-)
-Student.create(name: "aux2",
-               rut: "asdasdas2"
-)
+
