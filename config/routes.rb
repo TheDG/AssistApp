@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :courses do
     resources :students
   end
+  resources :assistances, only: [:index]
+
   get 'welcome/index'
 
   get 'admin/display'
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
     scope :v1 do
       mount_devise_token_auth_for 'Teacher', at: 'auth'
       get 'course_students' => 'content#course_students'
+      post 'record_assistance' => 'content#record_assistance'
+
     end
   end
 
