@@ -44,6 +44,10 @@ end
 #jquery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
+#heroku app
+gem 'rails_12factor'
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

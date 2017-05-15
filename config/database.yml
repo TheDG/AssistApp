@@ -82,6 +82,7 @@ test:
 #
 production:
   <<: *default
-  database: Desarrollo_de_Software-AssistApp_production
-  username: Desarrollo_de_Software-AssistApp
-  password: <%= ENV['DESARROLLO_DE_SOFTWARE-ASSISTAPP_DATABASE_PASSWORD'] %>
+  database: AssistApp_development
+  username: assistapp
+  #TODO mal pero bueno, lo mas rapido
+  password: assist123
