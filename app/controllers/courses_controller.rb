@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
+    @teacher = Teacher.first
   end
 
   # GET /courses/1
