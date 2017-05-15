@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   devise_for :teachers
   resources :courses
   resources :teachers
-    resources :courses do
-      resources :students
-    end
+  resources :courses do
+    resources :students
   end
   root 'welcome#index'
   get 'welcome/index'
