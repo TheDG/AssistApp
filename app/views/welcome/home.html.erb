@@ -1,0 +1,3 @@
+<% if !teacher_signed_in? %>
+    <a><%= link_to 'Iniciar Sesión', new_teacher_session_path, method: :get, class:"btn btn-white mb32" %> </a>
+<% end%>

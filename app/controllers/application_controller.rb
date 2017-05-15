@@ -11,4 +11,14 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :rut])
   end
 
+  def authenticate_teacher!
+    if teacher_signed_in?
+      super
+    else
+      redirect_to welcome_home_path, :notice => 'if you want to add a notice'
+      ## if you want render 404 page
+      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
+    end
+  end
+
 end

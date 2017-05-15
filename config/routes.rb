@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'welcome#index'
+  get 'welcome/home'
+
 
   resources :students
   devise_for :teachers
@@ -9,7 +11,6 @@ Rails.application.routes.draw do
   resources :courses do
     resources :students
   end
-  root 'welcome#index'
   get 'welcome/index'
 
   get 'admin/display'
