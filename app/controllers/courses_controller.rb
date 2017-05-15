@@ -19,6 +19,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    @teachers = Teacher.all
   end
 
   # POST /courses
@@ -42,6 +43,8 @@ class CoursesController < ApplicationController
   def update
     respond_to do |format|
       if @course.update(course_params)
+        @course.teacher = Teacher.where(email: params[:teacher]).first
+        @course.save
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
         format.json { render :show, status: :ok, location: @course }
       else

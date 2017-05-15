@@ -7,6 +7,16 @@ Rails.application.routes.draw do
   resources :teachers
   resources :courses
 
+  get 'admin/display'
+  get 'admin/add_teacher'
+  get 'admin/add_student'
+  get 'admin/add_student2'
+  post 'admin/add_student3'
+  get 'admin/student_courses_index'
+
+
+
+
   namespace :api do
     scope :v1 do
       mount_devise_token_auth_for 'Teacher', at: 'auth'
