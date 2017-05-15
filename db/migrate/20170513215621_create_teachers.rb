@@ -5,6 +5,7 @@ class CreateTeachers < ActiveRecord::Migration[5.1]
       t.string :last_name
       t.string :rut, null: false
 
+
       t.timestamps
     end
   end
