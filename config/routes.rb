@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :students
     end
   end
-  
+
   resources :assistances, only: [:index]
 
   get 'welcome/index'

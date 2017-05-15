@@ -1,24 +1,79 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <h1>Course:
+      <% if (@course.subject!=nil)%>
+        <% if (@course.grade!=nil)%>
+          <% if (@course.level!=nil)%>
+            <%= @course.subject + " "+@course.grade+"-"+@course.level%>
+          <%else%>
+            <%= @course.subject + " "+@course.grade%>
+          <%end%>
+        <%else%>
+          <% if (@course.level!=nil)%>
+            <%= @course.subject +" "+@course.level%>
+          <%else%>
+            <%= @course.subject%>
+          <%end%>
+        <%end%>
+      <% else %>
+        <% if (@course.grade!=nil)%>
+          <% if (@course.level!=nil)%>
+            <%= @course.grade+"-"+@course.level%>
+          <%else%>
+            <%= @course.grade%>
+          <%end%>
+        <%else%>
+          <% if (@course.level!=nil)%>
+            <%= @course.level%>
+          <%end%>
+        <%end%>
+      <% end %>
+  </h1>
+
+</p>
+<p>
   <strong>Teacher:</strong>
-  <%= @course.teacher.name %>
+  <%= @course.teacher.name%>
 </p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @course.subject %>
-</p>
+<h1>Assistances</h1>
 
-<p>
-  <strong>Grade:</strong>
-  <%= @course.grade %>
-</p>
+<table class="basic_table">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>rut</th>
+      <% @dates.each do |date| %>
+        <td><%= date.strftime('%m-%d') %></td>
+      <% end %>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Level:</strong>
-  <%= @course.level %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+  <tbody>
+    <% @course.students.each do |student| %>
+      <tr>
+        <td>
+          <% if (student.last_name!=nil)%>
+            <%= student.name + " "+student.last_name %>
+          <% else %>
+            <%= student.name %>
+          <% end %>
+        </td>
+        <td><%= student.rut %></td>
+        <% @assistance.each do |assistance| %>
+          <% if (assistance.student == student)%>
+            <% if (assistance.attend )%>
+              <td bgcolor="#88ff88"><%= assistance.attend %></td>
+            <%else%>
+              <td bgcolor="#ff8888"><%= assistance.attend %></td>
+            <%end%>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</br>
+<!--<%= link_to 'Edit', edit_course_path(@course), class:'blue_btn' %> | -->
+<%= link_to 'Back', courses_path, class:'blue_btn' %>

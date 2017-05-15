@@ -1,20 +1,26 @@
 <% if !teacher_signed_in? %>
     <div class="container">
   	   <div class="row">
-         <div class="col-md-1">
-           <div class="btn">
-             <a><%= link_to 'Log In', new_teacher_session_path, method: :get, :class => "btn btn-primary btn-block" %> </a>
-           </div>
-         </div>
+
         </div>
         <div class="row">
-          <div class="col-md-8" align="left">
+          <div class="col-md-6">
+            <div class="btn">
+              <a><%= link_to 'Log In', new_teacher_session_path, method: :get, :class => "btn btn-primary btn-block" %> </a>
+            </div>
+          </div>
+
+          <div class="col-md-6" align="left">
             <a> <h1>Welcome to AssistApp</h1></a>
             <article href=""><h3>AssistApp is a Web and Mobile application to help teachers on taking the attendance of their students. It consists on two parts</h3></article>
           </div>
+
         </div>
 
         <div class="row">
+
+          <div class="col-md-2">
+          </div>
 
           <div class="col-md-4" align="left">
   		       <article>
@@ -36,7 +42,7 @@
   				    </article>
             </div>
 
-            <div class="col-md-4" align="left">
+            <div class="col-md-6" align="left">
     		       <article>
         			      <figure>
               				<a>
@@ -55,10 +61,6 @@
             		  </div>
     				    </article>
               </div>
-
-
-                <div class="col-md-4">
-                </div>
 
           </div>
 

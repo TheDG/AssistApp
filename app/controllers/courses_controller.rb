@@ -11,6 +11,20 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    @assistance =[]
+    aux = Assistance.all
+    aux.each do |ass|
+      if (ass.course_id==@course.id)
+        @assistance << ass
+      end
+    end
+    #@course = Course.find { @asi  }
+    @dates =[]
+    @assistance.each do |ass|
+      unless (@dates.include?(ass.date))
+        @dates << ass.date
+      end
+    end
   end
 
   # GET /courses/new
