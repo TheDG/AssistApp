@@ -5,7 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+#ruby version
+ruby '~> 2.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use postgresql as the database for Active Record
@@ -23,12 +24,15 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'jquery-turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
 #linter
 gem 'rubocop'
 
@@ -43,6 +47,15 @@ end
 
 #jquery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+
+#heroku app
+gem 'rails_12factor'
+
+#auth
+gem 'devise', git: 'https://github.com/plataformatec/devise.git', ref: 'a62faa2c8258ba1c35fe84e147f42c35eccccb8a'
+gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth.git'
+gem 'omniauth'
+gem 'hashie'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

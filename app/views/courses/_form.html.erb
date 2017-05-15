@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :teacher %>
-    <%= form.text_field :teacher, id: :course_teacher %>
+    <%= form.label :teacher %><br>
+    <%= select_tag :teacher, options_for_select(@teachers.all.map{ |u| [u.email] })   %>
   </div>
 
   <div class="field">
