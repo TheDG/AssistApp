@@ -4,14 +4,21 @@ Rails.application.routes.draw do
   get 'welcome/home'
 
 
-  resources :students
-  devise_for :teachers
-  resources :courses
-  resources :teachers do
-    resources :courses do
-      resources :students
+  resources :students do
+    collection do
+      get 'own_index'
     end
   end
+  devise_for :teachers
+
+  resources :courses do
+    collection do
+      get 'own_index'
+    end
+    resources :students
+    resources :assistances, only: [:index]
+  end
+  resources :teachers
 
   resources :assistances, only: [:index]
 

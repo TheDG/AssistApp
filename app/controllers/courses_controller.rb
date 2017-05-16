@@ -5,7 +5,10 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     @courses = Course.all
-    @teacher = Teacher.first
+  end
+
+  def own_index
+    @courses = Course.where(teacher: current_teacher)
   end
 
   # GET /courses/1

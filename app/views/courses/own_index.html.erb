@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Own Courses</h1>
+
+<table class="w3-table-all w3-centered">
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Grade</th>
+      <th>Level</th>
+      <th colspan="3"></th>
+      <th>Details</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= course.subject %></td>
+        <td><%= course.grade %></td>
+        <td><%= course.level %></td>
+        <td><%= link_to 'Edit', edit_course_path(course) %></td>
+        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><%= link_to 'GO to details', course %></th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

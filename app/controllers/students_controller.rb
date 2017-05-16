@@ -8,6 +8,10 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def own_index
+    @students = Student.all
+  end
+
   # GET /students/1
   # GET /students/1.json
   def show
