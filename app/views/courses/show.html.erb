@@ -1,26 +1,41 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <h1>Course:
+      <% if (@course.subject!=nil)%>
+        <% if (@course.grade!=nil)%>
+          <% if (@course.level!=nil)%>
+            <%= @course.subject + " "+@course.grade+"-"+@course.level%>
+          <%else%>
+            <%= @course.subject + " "+@course.grade%>
+          <%end%>
+        <%else%>
+          <% if (@course.level!=nil)%>
+            <%= @course.subject +" "+@course.level%>
+          <%else%>
+            <%= @course.subject%>
+          <%end%>
+        <%end%>
+      <% else %>
+        <% if (@course.grade!=nil)%>
+          <% if (@course.level!=nil)%>
+            <%= @course.grade+"-"+@course.level%>
+          <%else%>
+            <%= @course.grade%>
+          <%end%>
+        <%else%>
+          <% if (@course.level!=nil)%>
+            <%= @course.level%>
+          <%end%>
+        <%end%>
+      <% end %>
+  </h1>
+
+</p>
+<p>
   <strong>Teacher:</strong>
-  <%= @course.teacher.name %>
+  <%= @course.teacher.name%>
 </p>
-
-<p>
-  <strong>Subject:</strong>
-  <%= @course.subject %>
-</p>
-
-<p>
-  <strong>Grade:</strong>
-  <%= @course.grade %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @course.level %>
-</p>
-
-
 
 <h1>Assistances</h1>
 
@@ -38,7 +53,13 @@
   <tbody>
     <% @course.students.each do |student| %>
       <tr>
-        <td><%= student.name %></td>
+        <td>
+          <% if (student.last_name!=nil)%>
+            <%= student.name + " "+student.last_name %>
+          <% else %>
+            <%= student.name %>
+          <% end %>
+        </td>
         <td><%= student.rut %></td>
         <% @assistance.each do |assistance| %>
           <% if (assistance.student == student)%>
@@ -53,6 +74,6 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+</br>
+<!--<%= link_to 'Edit', edit_course_path(@course), class:'blue_btn' %> | -->
+<%= link_to 'Back', courses_path, class:'blue_btn' %>
