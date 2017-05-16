@@ -68,7 +68,7 @@ course2.save
 1.upto(10) do |i|
   0.upto(students.length-1) do |j|
   Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
-                    attend: [true, false].sample,
+                    attend: [true,true,true, false].sample,
                     student_id:students[j].id,
                     course_id: course1.id,
                     )
@@ -77,12 +77,12 @@ end
 
 1.upto(10) do |i|
   Assistance.create(date: DateTime.new(2017, 5, i, 11, 30, 0),
-                    attend: [true, false].sample,
+                    attend: [true,true,true, false].sample,
                     student_id:stud2.id,
                     course_id: course2.id,
                     )
   Assistance.create(date: DateTime.new(2017, 5, i, 11, 30, 0),
-                    attend: [true, false].sample,
+                    attend: [true,true,true, false].sample,
                     student_id:stud1.id,
                     course_id: course2.id,
                     )

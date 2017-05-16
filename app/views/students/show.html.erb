@@ -2,13 +2,46 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @student.name %>
+  <% if (@student.last_name!=nil)%>
+    <%= @student.name + " "+@student.last_name %>
+  <% else %>
+    <%= @student.name %>
+  <% end %>
 </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @student.last_name %>
-</p>
+  <h1><strong>Assitence:</strong></h1>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+
+  <% @student.courses.each do |course| %>
+    <h2><strong>Course: <%= course.subject+" "+course.grade+"-"+course.level%></strong></h2>
+    <table class="basic_table">
+      <thead>
+        <tr>
+          <% @student.assistances.each do |ass| %>
+            <%if (ass.course_id==course.id)%>
+              <td><%= ass.date.strftime('%m-%d') %></td>
+            <% end %>
+          <%end%>
+        </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+            <% @student.assistances.each do |ass| %>
+              <%if (ass.course_id==course.id)%>
+                <% if (ass.attend )%>
+                  <td bgcolor="#88ff88"><%= ass.attend %></td>
+                <% else %>
+                  <td bgcolor="#ff8888"><%= ass.attend %></td>
+                <% end %>
+              <% end %>
+            <%end%>
+          </tr>
+      </tbody>
+    </table>
+  <%end%>
+  
+ <br/>
+
+<%= link_to 'Edit', edit_student_path(@student),class:'blue_btn' %> |
+<%= link_to 'Back', students_path,class:'blue_btn' %>
