@@ -30,9 +30,9 @@
             <% @student.assistances.each do |ass| %>
               <%if (ass.course_id==course.id)%>
                 <% if (ass.attend )%>
-                  <td bgcolor="#88ff88"><%= ass.attend %></td>
+                  <td bgcolor="#88ff88">yes</td>
                 <% else %>
-                  <td bgcolor="#ff8888"><%= ass.attend %></td>
+                  <td bgcolor="#ff8888">no</td>
                 <% end %>
               <% end %>
             <%end%>

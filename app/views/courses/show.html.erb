@@ -64,9 +64,9 @@
         <% @assistance.each do |assistance| %>
           <% if (assistance.student == student)%>
             <% if (assistance.attend )%>
-              <td bgcolor="#88ff88"><%= assistance.attend %></td>
+              <td bgcolor="#88ff88">yes</td>
             <%else%>
-              <td bgcolor="#ff8888"><%= assistance.attend %></td>
+              <td bgcolor="#ff8888">no</td>
             <%end%>
           <% end %>
         <% end %>
