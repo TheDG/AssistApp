@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   resources :students
   devise_for :teachers
   resources :courses
-  resources :teachers
+  resources :teachers 
   resources :courses do
     resources :students
+    resources :assistances, only: [:index]
   end
   resources :assistances, only: [:index]
 
