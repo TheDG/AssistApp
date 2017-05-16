@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Last name</th>
       <th>Email</th>
+      <td>RUT</td>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= teacher.name %></td>
         <td><%= teacher.last_name %></td>
         <td><%= teacher.email %></td>
+        <td><%= teacher.rut %></td>
         <td><%= link_to 'Show', teacher %></td>
         <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
         <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>

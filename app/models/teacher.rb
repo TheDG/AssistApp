@@ -6,6 +6,9 @@ class Teacher < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable #,:confirmable
 
+  validates :email, uniqueness: true
+  validates :rut, uniqueness: true
+
   include DeviseTokenAuth::Concerns::User
 
 end
