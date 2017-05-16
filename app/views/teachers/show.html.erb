@@ -1,19 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @teacher.name %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+      <strong>Name:</strong>
+      <%= @teacher.name %>
+    </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @teacher.last_name %>
-</p>
+    <p>
+      <strong>Last name:</strong>
+      <%= @teacher.last_name %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @teacher.email %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @teacher.email %>
+    </p>
+      
+  </div>
+</div>
+
 
 <%= link_to 'Edit', edit_teacher_path(@teacher) %> |
 <%= link_to 'Back', teachers_path %>
