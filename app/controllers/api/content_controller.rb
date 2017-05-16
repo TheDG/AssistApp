@@ -29,7 +29,6 @@ class Api::ContentController < Api::ApiController
     if aux
       aux.each do |assist|
         assist.destroy
-        puts "adsadsa "
       end
       render json: {
           'success': true
@@ -50,10 +49,12 @@ class Api::ContentController < Api::ApiController
     aux = course.assistances.where('date BETWEEN ? AND ?', date.beginning_of_day,
                                    date.end_of_day)
     aux = aux.where(course_id: params[:id])
+    aux = aux.as_json(:include => :student)
+
     if aux
       render json: {
           'success': true,
-          'assistance': aux
+          "course-#{params[:id]}-assistance": aux
       }
     else
       render json: {
