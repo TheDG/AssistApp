@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   resources :students
   devise_for :teachers
   resources :courses
-  resources :teachers
-  resources :courses do
-    resources :students
+  resources :teachers do
+    resources :courses do
+      resources :students
+    end
   end
+  
   get 'welcome/index'
 
   get 'admin/display'
