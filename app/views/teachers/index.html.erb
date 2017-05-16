@@ -1,33 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Teachers</h1>
+<div class="col-md-3">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <td>RUT</td>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+</div>
+<div class="col-md-3">
 
-  <tbody>
-    <% @teachers.each do |teacher| %>
-      <tr>
-        <td><%= teacher.name %></td>
-        <td><%= teacher.last_name %></td>
-        <td><%= teacher.email %></td>
-        <td><%= teacher.rut %></td>
-        <td><%= link_to 'Show', teacher %></td>
-        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
+<div class="col-md-6">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h1>Teachers</h1>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @teachers.each do |teacher| %>
+            <tr>
+              <td><%= teacher.name %></td>
+              <td><%= teacher.last_name %></td>
+              <td><%= teacher.email %></td>
+              <td><%= link_to 'Show', teacher %></td>
+              <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
+              <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </div>
+      <%= link_to 'New Teacher', new_teacher_path %>
+    </div>
+  </div>
 
 <br>
-
-<%= link_to 'New Teacher', new_teacher_path %>

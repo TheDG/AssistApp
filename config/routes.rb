@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   resources :students
   devise_for :teachers
   resources :courses
-  resources :teachers 
-  resources :courses do
-    resources :students
-    resources :assistances, only: [:index]
+  resources :teachers do
+    resources :courses do
+      resources :students
+    end
   end
+
   resources :assistances, only: [:index]
 
   get 'welcome/index'

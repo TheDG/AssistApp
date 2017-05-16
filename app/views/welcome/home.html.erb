@@ -1,3 +1,71 @@
 <% if !teacher_signed_in? %>
-    <a><%= link_to 'Iniciar Sesión', new_teacher_session_path, method: :get, class:"btn btn-white mb32" %> </a>
+    <div class="container">
+  	   <div class="row">
+
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="btn">
+              <a><%= link_to 'Log In', new_teacher_session_path, method: :get, :class => "btn btn-primary btn-block" %> </a>
+            </div>
+          </div>
+
+          <div class="col-md-6" align="left">
+            <a> <h1>Welcome to AssistApp</h1></a>
+            <article href=""><h3>AssistApp is a Web and Mobile application to help teachers on taking the attendance of their students. It consists on two parts</h3></article>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-2">
+          </div>
+
+          <div class="col-md-4" align="left">
+  		       <article>
+      			      <figure>
+            				<a>
+                      <img class="img img-responsive article-img" src="/analytics.jpg">
+                    </a>
+            				<figcaption class="article-caption">
+                      <h1 class="article-title">
+                        <a href=""><h3>Assistances Statistics</h3></a>
+                      </h1>
+            				</figcaption>
+          				</figure>
+          			<div class="article-intro col-lg-12" style="padding-top: 10px;">
+          			    <article class="">
+                      <h4>Each teacher can manage and check their student's attendance and statistics in our Web App</h4>
+          			    </article>
+          		  </div>
+  				    </article>
+            </div>
+
+            <div class="col-md-6" align="left">
+    		       <article>
+        			      <figure>
+              				<a>
+                        <img class="img img-responsive article-img" src="/QR.jpg">
+                      </a>
+              				<figcaption class="article-caption">
+                        <h1 class="article-title">
+                          <a href=""><h3>QR code </h3></a>
+                        </h1>
+              				</figcaption>
+            				</figure>
+            			<div class="article-intro col-lg-12" style="padding-top: 10px;">
+            			    <article class="">
+                        <h4>Each student has his own unique QR code. The teacher scans his code with our Mobile App and his attendance automatically registers in our servers. You can download our App for free in the Play Store</h4>
+            			    </article>
+            		  </div>
+    				    </article>
+              </div>
+
+          </div>
+
+      </div>
+    </div>
+
+
 <% end%>
