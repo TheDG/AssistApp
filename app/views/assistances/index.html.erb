@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
+<h1>Assistances</h1>
 
 <table class="w3-table-all w3-centered">
   <thead>
@@ -16,6 +16,7 @@
       <tr>
         <td><%= assistance.student.rut %></td>
         <td><%= assistance.date.strftime('%d-%m-%Y') %></td>
+        <td><%= assistance.course %></td>
       </tr>
     <% end %>
   </tbody>
