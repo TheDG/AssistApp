@@ -28,7 +28,6 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
-
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
@@ -73,7 +72,8 @@ class CoursesController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+  #TODO teacher_id is strange, hot fix tmb en course form
     def course_params
-      params.require(:course).permit(:teacher, :subject, :grade, :level)
+      params.require(:course).permit(:teacher, :subject, :grade, :level, :teacher_id)
     end
 end

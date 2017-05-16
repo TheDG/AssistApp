@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :teacher %><br>
-    <%= select_tag :teacher, options_for_select(@teachers.all.map{ |u| [u.email] })   %>
+    <%= form.select :teacher_id, options_for_select(@teachers.all.map{ |u| [u.email, u.id] })   %>
   </div>
 
   <div class="field">
