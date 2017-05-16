@@ -3,7 +3,7 @@
 
 <h1>Course</h1>
 
-<table>
+<table class="basic_table">
   <thead>
   <tr>
     <th>Teacher</th>
@@ -21,7 +21,7 @@
         <td><%= course.subject %></td>
         <td><%= course.grade %></td>
         <td><%= course.level %></td>
-        <td><%= link_to 'Add student', admin_add_student2_path(course: course.id) %></td>
+        <td><%= link_to 'Add student', admin_add_student2_path(course: course.id), class:'blue_btn' %></td>
       </tr>
   <% end %>
   </tbody>
@@ -30,5 +30,4 @@
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>
-
+<%= link_to 'New Course', new_course_path, class:'blue_btn' %>
