@@ -53,12 +53,6 @@ course2 = Course.create(teacher_id: aux.id,
               grade: 'I',
               level: 'a',
               )
-Student.create(name: "aux",
-               rut: "asdasdas1"
-)
-Student.create(name: "aux2",
-               rut: "asdasdas2"
-)
 
 course2.students << stud1
 course2.students << stud2
@@ -87,3 +81,4 @@ end
                     course_id: course2.id,
                     )
 end
+
