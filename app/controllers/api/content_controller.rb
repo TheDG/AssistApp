@@ -13,10 +13,10 @@ class Api::ContentController < Api::ApiController
     #puts Student.where(rut: params[:rut]).first
     #puts Time.parse(params[:date])
     aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
-                            date: Time.parse(params[:date]),
-                            attend: true).first_or_create(student_id: Student.where(rut: params[:rut]).first.id,
-                                                               date: Time.parse(params[:date]).to_date,
-                                                               attend: true)
+                           date: Time.parse(params[:date]), course_id: params[:course_id],
+                           attend: true).first_or_create(student_id: Student.where(rut: params[:rut]).first.id,
+                                                         date: Time.parse(params[:date]).to_date,
+                                                          attend: true, course_id: params[:course_id] )
     render json: aux
   end
 
@@ -46,6 +46,7 @@ class Api::ContentController < Api::ApiController
     date = DateTime.parse(params[:date])
     aux = course.assistances.where('date BETWEEN ? AND ?', date.beginning_of_day,
                                    date.end_of_day)
+    aux = aux.where(course_id: params[:id])
     if aux
       render json: {
           'success': true,

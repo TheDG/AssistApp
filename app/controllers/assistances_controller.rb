@@ -15,6 +15,6 @@ class AssistancesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
 
   def assistance_params
-    params.require(:assitance).permit(:date, :student, :email, :rut)
+    params.require(:assitance).permit(:date, :student, :email, :rut, :course)
   end
 end
