@@ -63,6 +63,22 @@ class Api::ContentController < Api::ApiController
     end
   end
 
+  def destroy_all_assistance
+    aux = Assistance.all
+    if aux
+      aux.each do |assist|
+        assist.destroy
+      end
+      render json: {
+          'success': true
+      }
+    else
+      render json: {
+          'success': false
+      }
+    end
+  end
+
 
 
 end
