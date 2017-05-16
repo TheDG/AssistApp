@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'Teacher', at: 'auth'
       get 'course_students' => 'content#course_students'
       post 'record_assistance' => 'content#record_assistance'
+      delete 'assistance' => 'content#destroy_assistance'
 
     end
   end
