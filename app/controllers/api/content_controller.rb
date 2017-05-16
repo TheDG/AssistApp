@@ -21,12 +21,15 @@ class Api::ContentController < Api::ApiController
   end
 
   def destroy_assistance
+    date = DateTime.parse(params[:date])
     aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
-                           date: Time.parse(params[:date]),
                            attend: true).all
+    aux = aux.where('date BETWEEN ? AND ?', date.beginning_of_day,
+                                   date.end_of_day)
     if aux
       aux.each do |assist|
         assist.destroy
+        puts "adsadsa "
       end
       render json: {
           'success': true
