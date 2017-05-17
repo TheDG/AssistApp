@@ -5,21 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def resource_name
-    :teacher
-  end
-
-  def resource
-    @resource ||= Teacher.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:teacher]
-  end
-
-  helper_method :resource, :resource_name, :devise_mapping
-
-
   protected
 
   def configure_permitted_parameters

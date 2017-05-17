@@ -6,16 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-stud1 = Student.create(name: "aux",
-               rut: "asdasdas1"
-)
-stud2 = Student.create(name: "aux2",
-               rut: "asdasdas2"
-)
-
-
-
-
 aux = Teacher.create(name: 'Pedro',
                      last_name: 'Cortes',
                      email: 'Email@uc.cl',
@@ -25,21 +15,16 @@ aux = Teacher.create(name: 'Pedro',
               )
 
 course1 = Course.create(teacher_id: aux.id,
-              subject: 'math',
+              subject: 'Math',
               grade: '8',
               level: 'b',
               )
-course1.students << stud1
-course1.students << stud2
-course1.save
 
 students = []
-students << stud1
-students << stud2
 nombres =["juan","pedro","diego","jose","josefina","raul","gabriel","maria","juana","sofia"]
 ruts=["23556256-3","23347118-1","23765349-8","23257839-8","23226899-2","23468343-3","23764165-6","23158042-6","23942584-7","23984934-3"]
 
-0.upto(9) do |i|
+0.upto(4) do |i|
   stuaux =  Student.create(name: nombres[i],
                  rut: ruts[i])
   course1.students << stuaux
@@ -47,20 +32,22 @@ ruts=["23556256-3","23347118-1","23765349-8","23257839-8","23226899-2","23468343
   students << stuaux
 end
 
-
 course2 = Course.create(teacher_id: aux.id,
-              subject: 'math',
-              grade: 'I',
-              level: 'a',
-              )
+                        subject: 'English',
+                        grade: '12',
+                        level: 'HL2',
+)
 
-course2.students << stud1
-course2.students << stud2
-course2.save
-
+5.upto(9) do |i|
+  stuaux =  Student.create(name: nombres[i],
+                           rut: ruts[i])
+  course2.students << stuaux
+  course2.save
+  students << stuaux
+end
 
 1.upto(10) do |i|
-  0.upto(students.length-1) do |j|
+  0.upto(4) do |j|
   Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
                     attend: [true,true,true, false].sample,
                     student_id:students[j].id,
@@ -70,15 +57,13 @@ course2.save
 end
 
 1.upto(10) do |i|
-  Assistance.create(date: DateTime.new(2017, 5, i, 11, 30, 0),
-                    attend: [true,true,true, false].sample,
-                    student_id:stud2.id,
-                    course_id: course2.id,
-                    )
-  Assistance.create(date: DateTime.new(2017, 5, i, 11, 30, 0),
-                    attend: [true,true,true, false].sample,
-                    student_id:stud1.id,
-                    course_id: course2.id,
-                    )
+  5.upto(9) do |j|
+    Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
+                      attend: [true,true,true, false].sample,
+                      student_id:students[j].id,
+                      course_id: course2.id,
+    )
+  end
 end
+
 
