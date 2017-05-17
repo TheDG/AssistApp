@@ -13,6 +13,13 @@ aux = Teacher.create(name: 'Pedro',
                      password: 'topsecret',
                      password_confirmation: 'topsecret'
               )
+aux2 = Teacher.create(name: 'Diego',
+                     last_name: 'Sinay',
+                     email: 'dsinay@uc.cl',
+                     rut: '123123-2',
+                     password: '123123',
+                     password_confirmation: '123123'
+)
 
 course1 = Course.create(teacher_id: aux.id,
               subject: 'Math',
@@ -32,7 +39,7 @@ ruts=["23556256-3","23347118-1","23765349-8","23257839-8","23226899-2","23468343
   students << stuaux
 end
 
-course2 = Course.create(teacher_id: aux.id,
+course2 = Course.create(teacher_id: aux2.id,
                         subject: 'English',
                         grade: '12',
                         level: 'HL2',

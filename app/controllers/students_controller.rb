@@ -9,7 +9,17 @@ class StudentsController < ApplicationController
   end
 
   def own_index
-    @students = Student.all
+    aux = Student.all
+    @students = []
+    aux.each do |student|
+      student.courses.each do |course|
+        if course.teacher == current_teacher
+          @students << student
+        end
+      end
+    end
+
+
   end
 
   # GET /students/1
