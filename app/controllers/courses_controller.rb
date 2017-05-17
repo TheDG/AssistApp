@@ -9,6 +9,7 @@ class CoursesController < ApplicationController
 
   def own_index
     @courses = Course.where(teacher: current_teacher)
+    render 'index'
   end
 
   # GET /courses/1
