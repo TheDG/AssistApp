@@ -14,6 +14,11 @@ class AdminController < ApplicationController
 
   def add_student2
     @course =  Course.find(params[:course])
+    @current_students = @course.students
+    @possible_students = Student.all.to_a
+    @current_students.each do |actual|
+      @possible_students.delete(actual)
+    end
   end
 
   def add_student3
