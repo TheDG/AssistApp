@@ -48,6 +48,8 @@
                       </ul>
                     </li>
                     </ul>
+                <%else%>
+                  <a><%= link_to 'Log In', new_teacher_session_path, method: :get, :class =>"navbar-brand" %> </a>
                 <%end%>
               <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <% if teacher_signed_in? %>
