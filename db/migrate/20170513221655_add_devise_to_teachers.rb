@@ -1,13 +1,14 @@
+# ADD device to teachers
 class AddDeviseToTeachers < ActiveRecord::Migration[5.1]
   def self.up
     change_table :teachers do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
 
       ## Required for token auth
-      t.string :provider, :null => false, :default => "email"
-      t.string :uid, :null => false, :default => ""
+      t.string :provider, null: false, default: 'email'
+      t.string :uid, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token

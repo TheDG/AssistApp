@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
-  #include in api controler
-  #include DeviseTokenAuth::Concerns::SetUserByToken
+  # include in api controler
+  # include DeviseTokenAuth::Concerns::SetUserByToken
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -15,10 +15,9 @@ class ApplicationController < ActionController::Base
     if teacher_signed_in?
       super
     else
-      redirect_to welcome_home_path, :notice => 'if you want to add a notice'
+      redirect_to welcome_home_path, notice: 'if you want to add a notice'
       ## if you want render 404 page
       ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end
   end
-
 end

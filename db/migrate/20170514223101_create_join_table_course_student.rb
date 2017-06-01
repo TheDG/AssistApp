@@ -1,3 +1,4 @@
+# Joim table for students and courses
 class CreateJoinTableCourseStudent < ActiveRecord::Migration[5.1]
   def change
     create_join_table :courses, :students do |t|

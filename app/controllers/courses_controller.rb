@@ -15,19 +15,15 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @assistance =[]
+    @assistance = []
     aux = Assistance.all
     aux.each do |ass|
-      if (ass.course_id==@course.id)
-        @assistance << ass
-      end
+      @assistance << ass if ass.course_id == @course.id
     end
-    #@course = Course.find { @asi  }
-    @dates =[]
+    # @course = Course.find { @asi  }
+    @dates = []
     @assistance.each do |ass|
-      unless (@dates.include?(ass.date))
-        @dates << ass.date
-      end
+      @dates << ass.date unless @dates.include?(ass.date)
     end
   end
 
@@ -84,14 +80,15 @@ class CoursesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_course
-      @course = Course.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-  #TODO teacher_id is strange, hot fix tmb en course form
-    def course_params
-      params.require(:course).permit(:teacher, :subject, :grade, :level, :teacher_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_course
+    @course = Course.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  # TODO teacher_id is strange, hot fix tmb en course form
+  def course_params
+    params.require(:course).permit(:teacher, :subject, :grade, :level, :teacher_id)
+  end
 end

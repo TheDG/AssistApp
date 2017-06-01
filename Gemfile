@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -23,8 +23,8 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 gem 'jquery-turbolinks'
+gem 'turbolinks', '~> 5'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -36,26 +36,29 @@ gem 'bcrypt', '~> 3.1.7'
 #linter
 gem 'rubocop'
 
-#Boostrap
+# Boostrap
 gem 'bootstrap', '~> 4.0.0.alpha6'
-gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'sprockets-rails', require: 'sprockets/railtie'
 
-#tooltips
+# tooltips
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
-#jquery
+# jquery
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
-#heroku app
+# heroku app
 gem 'rails_12factor'
 
-#auth
+# auth
 gem 'devise', git: 'https://github.com/plataformatec/devise.git', ref: 'a62faa2c8258ba1c35fe84e147f42c35eccccb8a'
 gem 'devise_token_auth', git: 'https://github.com/lynndylanhurley/devise_token_auth.git'
-gem 'omniauth'
 gem 'hashie'
+gem 'omniauth'
+
+#  rubocop
+gem 'rubocop-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -70,8 +73,8 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

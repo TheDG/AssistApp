@@ -1,8 +1,25 @@
 inherit_from: .rubocop_todo.yml
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/environments/development.rb'
+    - 'config/routes.rb'
+Metrics/MethodLength:
+  Max: 15
+Metrics/AbcSize:
+  Max: 20
 AllCops:
   Include:
     - Rakefile
     - config.ru
     - lib/**/*.rake
+    - '**/Gemfile'
+
   Exclude:
-    - db/schema.rbs
+    - db/schema.rb
+    - test/**/*
+    - config/routes.rb
+    - db/migrate/*
+
+Documentation:
+  Enabled: false

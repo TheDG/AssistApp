@@ -10,15 +10,14 @@
 # Cop supports --auto-correct.
 # Configuration parameters: Include, TreatCommentsAsGroupSeparators.
 # Include: **/Gemfile, **/gems.rb
-Bundler/OrderedGems:
-  Exclude:
-    - 'Gemfile'
 
 # Offense count: 23
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
   Max: 130
+  Exclude:
+    - 'config/initializers/devise.rb'
 
 # Offense count: 1
 # Configuration parameters: EnforcedStyle, SupportedStyles.
@@ -32,17 +31,11 @@ Style/Documentation:
   Exclude:
     - 'spec/**/*'
     - 'test/**/*'
-    - 'app/controllers/application_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
 Style/EmptyLines:
   Exclude:
-    - 'Gemfile'
     - 'bin/setup'
 
 # Offense count: 37
@@ -77,7 +70,6 @@ Style/SpaceInsideBrackets:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Exclude:
-    - 'Gemfile'
     - 'bin/spring'
     - 'bin/yarn'
     - 'config/environments/production.rb'

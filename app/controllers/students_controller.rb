@@ -13,19 +13,14 @@ class StudentsController < ApplicationController
     @students = []
     aux.each do |student|
       student.courses.each do |course|
-        if course.teacher == current_teacher
-          @students << student
-        end
+        @students << student if course.teacher == current_teacher
       end
     end
-
-
   end
 
   # GET /students/1
   # GET /students/1.json
-  def show
-  end
+  def show; end
 
   # GET /students/new
   def new
@@ -33,14 +28,12 @@ class StudentsController < ApplicationController
   end
 
   # GET /students/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /students
   # POST /students.json
   def create
     @student = Student.new(student_params)
-
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
@@ -77,13 +70,14 @@ class StudentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_student
-      @student = Student.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def student_params
-      params.require(:student).permit(:name, :last_name, :rut)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_student
+    @student = Student.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def student_params
+    params.require(:student).permit(:name, :last_name, :rut)
+  end
 end

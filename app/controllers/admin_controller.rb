@@ -1,8 +1,7 @@
 class AdminController < ApplicationController
   before_action :authenticate_teacher!
 
-  def display
-  end
+  def display; end
 
   def add_teacher
     @courses = Course.all
@@ -22,7 +21,7 @@ class AdminController < ApplicationController
   end
 
   def add_student3
-    Course.find(params[:course]).students <<  Student.where(rut: params[:student])
+    Course.find(params[:course]).students << Student.where(rut: params[:student])
     @courses = Course.all
     render 'admin/add_student'
   end
@@ -30,6 +29,4 @@ class AdminController < ApplicationController
   def student_courses_index
     @courses = Course.all
   end
-
-
 end
