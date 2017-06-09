@@ -2,7 +2,9 @@ require 'test_helper'
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @course = courses(:one)
+    @course = courses(:english)
+    @teacher = teachers(:diego)
+    sign_in(@teacher)
   end
 
   test "should get index" do
@@ -17,9 +19,9 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create course" do
     assert_difference('Course.count') do
-      post courses_url, params: { course: { grade: @course.grade, level: @course.level, subject: @course.subject, teacher: @course.teacher } }
+      post courses_url, params: { course: { grade: @course.grade, level: @course.level,
+                                            subject: @course.subject, teacher_id: @course.teacher.id} }
     end
-
     assert_redirected_to course_url(Course.last)
   end
 
@@ -34,7 +36,8 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update course" do
-    patch course_url(@course), params: { course: { grade: @course.grade, level: @course.level, subject: @course.subject, teacher: @course.teacher } }
+    patch course_url(@course), params: { course: { grade: @course.grade, level: @course.level,
+                                                   subject: @course.subject, teacher_id: @course.teacher.id } }
     assert_redirected_to course_url(@course)
   end
 
@@ -45,4 +48,13 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to courses_url
   end
+
+  test "should only show course assistance" do
+    get course_url(@course)
+    assigns(:assistance).each do |assist|
+      assert_equal assist.course_id, @course.id
+    end
+
+  end
+
 end

@@ -1,13 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  teacher: MyString
-  subject: MyString
-  grade: MyString
-  level: MyString
+english:
+  teacher: diego
+  subject: english
+  grade: 12
+  level: HL2
+  students: rick, juan, pete
 
-two:
-  teacher: MyString
-  subject: MyString
-  grade: MyString
-  level: MyString
+spanish:
+  teacher: jm
+  subject: spanish
+  grade: 11
+  level: SL1
+  students: juan
+
+science:
+  teacher: diego
+  subject: science
+  grade: 12
+  level: HL1
+  students: pete, rick
+

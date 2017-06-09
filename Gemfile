@@ -60,6 +60,9 @@ gem 'omniauth'
 #  rubocop
 gem 'rubocop-rails'
 
+#controller testing
+gem 'rails-controller-testing'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

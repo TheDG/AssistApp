@@ -20,7 +20,6 @@ class CoursesController < ApplicationController
     aux.each do |ass|
       @assistance << ass if ass.course_id == @course.id
     end
-    # @course = Course.find { @asi  }
     @dates = []
     @assistance.each do |ass|
       @dates << ass.date unless @dates.include?(ass.date)

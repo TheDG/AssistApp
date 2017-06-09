@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+assit_pete_1:
+  attend: true
+  date: 2017-12-2
+  student: pete
+  course_id: 1
+
+
+assit_pete_2:
+  attend: true
+  date: 2017-12-4
+  student: pete
+  course_id: 1
+
+assit_pete_2.5:
+  attend: true
+  date: 2017-12-4
+  student: pete
+  course_id: 2
+
+
+assit_pete_3:
+  attend: true
+  date: 2017-12-8
+  student: pete
+  course_id: 1

@@ -1,9 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  last_name: MyString
+pete:
+  name: pete
+  last_name: uno
+  rut: 111111
 
-two:
-  name: MyString
-  last_name: MyString
+rick:
+  name: rick
+  last_name: dois
+  rut: 222222
+
+juan:
+  name: juan
+  last_name: treis
+  rut: 33333333

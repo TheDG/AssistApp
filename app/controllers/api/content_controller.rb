@@ -5,10 +5,9 @@ module Api
 
     def course_students
       @json = Course.where(teacher_id: current_teacher.id).all
-      # @json = Course.where(teacher_id: 1).all
-      # TODO check esto
-      aux = @json.as_json(include: :students)
-      render json: aux
+      # TODO: check esto
+      @aux = @json.as_json(include: :students)
+      render json: @aux
     end
 
     def record_assistance
@@ -30,9 +29,6 @@ module Api
       aux = aux.where('date BETWEEN ? AND ?', date.beginning_of_day,
                       date.end_of_day)
       if aux
-        # aux.each do |assist|
-        #  assist.destroy
-        # end
         aux.map(&:destroy)
         render json: {
           'success': true
@@ -44,6 +40,7 @@ module Api
       end
     end
 
+    # Not tested
     def daily_course_assistance
       course = Course.find(params[:id])
       date = DateTime.parse(params[:date])
@@ -65,9 +62,6 @@ module Api
     def destroy_all_assistance
       aux = Assistance.all
       if aux
-        # aux.each do |assist|
-        #  assist.destroy
-        # end
         aux.map(&:destroy)
         render json: {
           'success': true

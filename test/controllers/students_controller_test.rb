@@ -2,7 +2,10 @@ require 'test_helper'
 
 class StudentsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @student = students(:one)
+    @student = students(:pete)
+    @teacher = teachers(:diego)
+    sign_in(@teacher)
+
   end
 
   test "should get index" do
@@ -17,10 +20,16 @@ class StudentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create student" do
     assert_difference('Student.count') do
-      post students_url, params: { student: { last_name: @student.last_name, name: @student.name } }
+      post students_url, params: { student: { last_name: @student.last_name, name: @student.name, rut: '987987' } }
     end
-
     assert_redirected_to student_url(Student.last)
+  end
+
+  test "should not create student" do
+    assert_no_difference('Teacher.count',
+                         message = 'Cant create student with same rut') do
+      post students_url, params: { student: { last_name: @student.last_name, name: @student.name, rut: @student.rut } }
+    end
   end
 
   test "should show student" do
