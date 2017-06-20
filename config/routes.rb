@@ -17,11 +17,21 @@ Rails.application.routes.draw do
     resources :students
     resources :assistances, only: [:index]
   end
+
+  resources :teachers do
+    collection {post :import}
+  end
+
+  resources :students do
+    collection {post :import}
+  end
+
   resources :teachers do
     resources :courses do
       resources :students
     end
   end
+
   resources :assistances, only: [:index]
 
   get 'welcome/index'

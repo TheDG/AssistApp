@@ -34,7 +34,18 @@
         </tbody>
       </table>
     </div>
-    <%= link_to 'New Teacher', new_student_path %>
+    <%= link_to 'New Student', new_student_path %>
+    <div>
+      <h4>Import that DATA</h4>
+      <%= form_tag import_students_path, multipart:true do %>
+        <%=file_field_tag :file%>
+        <%=submit_tag "Import CSV"%>
+      <% end %>
+    </div>
+    <div>
+      <h4>Export teachers csv file</h4>
+      <%= button_to "Export Teacher CSV", "students.csv", method: :get%>
+    </div>
   </div>
 </div>
 

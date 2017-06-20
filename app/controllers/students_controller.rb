@@ -6,6 +6,10 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @students.export }
+    end
   end
 
   def own_index
@@ -68,6 +72,23 @@ class StudentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def import
+    @import = ""
+    begin
+      @import = Student.import(params[:file])
+
+      if @import == true
+        redirect_to students_url notice: "Activity Data Imported"
+      else
+        redirect_to students_url notice: @import.to_s
+      end
+    rescue => error
+      flash.now[:alert] = error
+      redirect_to student_url notice: error.to_s
+    end
+  end
+
 
   private
 

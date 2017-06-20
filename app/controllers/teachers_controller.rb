@@ -6,6 +6,10 @@ class TeachersController < ApplicationController
   # GET /teachers.json
   def index
     @teachers = Teacher.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @teachers.export }
+    end
   end
 
   # GET /teachers/1
@@ -59,6 +63,22 @@ class TeachersController < ApplicationController
     end
   end
 
+  def import
+    @import = ""
+    begin
+      @import = Teacher.import(params[:file])
+
+      if @import == true
+        redirect_to teachers_url notice: "Activity Data Imported"
+      else
+        redirect_to teachers_url notice: @import.to_s
+      end
+    rescue => error
+      flash.now[:alert] = error
+      redirect_to teachers_url notice: error.to_s
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -68,6 +88,6 @@ class TeachersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def teacher_params
-    params.require(:teacher).permit(:name, :last_name, :email, :rut)
+    params.require(:teacher).permit(:name, :last_name, :email, :rut, :file)
   end
 end

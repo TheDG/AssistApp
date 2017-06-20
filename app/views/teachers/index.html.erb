@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <div class="col-md-3">
 
 </div>
@@ -8,36 +7,51 @@
 </div>
 <div class="col-md-6">
   <div class="panel panel-default">
-    <div class="panel-body">
-      <h1>Teachers</h1>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Last name</th>
-            <th>RUT</th>
-            <th>Email</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @teachers.each do |teacher| %>
+    <div class="col-md-6" style="float: left">
+      <div class="panel-body">
+        <h1>Teachers</h1>
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <td><%= teacher.name %></td>
-              <td><%= teacher.last_name %></td>
-              <td><%= teacher.rut %></td>
-              <td><%= teacher.email %></td>
-              <td><%= link_to 'Show', teacher %></td>
-              <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-              <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Name</th>
+              <th>Last name</th>
+              <th>RUT</th>
+              <th>Email</th>
+              <th colspan="3"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            <% @teachers.each do |teacher|%>
+              <tr>
+                <td><%= teacher.name %></td>
+                <td><%= teacher.last_name %></td>
+                <td><%= teacher.rut %></td>
+                <td><%= teacher.email %></td>
+                <td><%= link_to 'Show', teacher %></td>
+                <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
+                <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
       </div>
       <%= link_to 'New Teacher', new_teacher_path %>
+      <div>
+        <h4>Import teachers csv file</h4>
+        <%= form_tag import_teachers_path, multipart:true do %>
+          <%=file_field_tag :file%>
+          <%=submit_tag "Import CSV"%>
+        <% end %>
+      </div>
+      <div>
+        <h4>Export teachers csv file</h4>
+        <%= button_to "Export Teacher CSV", "teachers.csv", method: :get%>
+      </div>
     </div>
   </div>
+</div>
+
+
 
 <br>
