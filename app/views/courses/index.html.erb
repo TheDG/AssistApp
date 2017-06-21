@@ -1,30 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Courses</h1>
-<div style="direction:rtl; overflow:auto; height:500px;width:400px;">
-<table class="basic_table">
-  <thead>
+  <table class="basic_table">
+    <thead>
     <tr>
       <th>Teacher</th>
       <th>Subject</th>
       <th>Grade</th>
       <th>Level</th>
       <th>Details</th>
+      <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @courses.each do |course| %>
-      <tr>
-        <td><%= course.teacher.name %></td>
-        <td><%= course.subject %></td>
-        <td><%= course.grade %></td>
-        <td><%= course.level %></td>
-        <th><%= link_to 'GO to details', course, class:"blue_btn" %></th>
-      </tr>
+        <tr>
+          <td><%= course.teacher.name %></td>
+          <td><%= course.subject %></td>
+          <td><%= course.grade %></td>
+          <td><%= course.level %></td>
+          <th><%= link_to 'GO to details', course, class:"blue_btn" %></th>
+          <th ><%= link_to 'Generate ALL QR', all_qr_course_path(course.id), class:'blue_btn' %><td>
+        </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 </div>
 
 <br>

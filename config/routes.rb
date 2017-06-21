@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     collection do
       get 'own_index'
     end
+    member do
+      get :all_qr
+    end
     resources :students
     resources :assistances, only: [:index]
   end
@@ -23,7 +26,10 @@ Rails.application.routes.draw do
   end
 
   resources :students do
-    collection {post :import}
+    collection { post :import }
+    member do
+      get :generate_qr
+    end
   end
 
   resources :teachers do

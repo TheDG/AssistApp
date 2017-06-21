@@ -1,6 +1,14 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :all_qr]
   before_action :authenticate_teacher!
+
+  def all_qr
+    tmp_path = @course.zip_all_qr
+    send_file tmp_path, type: 'application/zip',
+              disposition: 'attachment',
+              filename: "#{@course.grade}-#{@course.subject}-#{@course.level}.zip"
+  end
+
   # GET /courses
   # GET /courses.json
   def index

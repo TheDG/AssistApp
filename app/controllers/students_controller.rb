@@ -1,6 +1,14 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :generate_qr]
   before_action :authenticate_teacher!
+
+
+  def generate_qr
+    tuple = @student.gen_qr
+    send_data tuple[0], type: 'image/png', filename: @student.rut
+    File.delete(tuple[1])
+    #render json: nil, status: :ok
+  end
 
   # GET /students
   # GET /students.json

@@ -60,8 +60,14 @@ gem 'omniauth'
 #  rubocop
 gem 'rubocop-rails'
 
-#controller testing
+# controller testing
 gem 'rails-controller-testing'
+
+# QR code generator
+gem 'rqrcode'
+
+# ruby zip
+gem 'rubyzip'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
