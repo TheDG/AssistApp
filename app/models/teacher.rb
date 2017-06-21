@@ -4,9 +4,9 @@ class Teacher < ApplicationRecord
   has_many :courses
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable # ,:confirmable
+         :omniauthable # ,:confirmable, :registerable
   validates :email, uniqueness: true
   validates :rut, uniqueness: true
   include DeviseTokenAuth::Concerns::User
@@ -14,6 +14,7 @@ class Teacher < ApplicationRecord
   def self.import(file)
     begin
       CSV.foreach(file.path, headers:true) do |row|
+        puts row
         Teacher.create! row.to_hash
       end
     rescue => error
