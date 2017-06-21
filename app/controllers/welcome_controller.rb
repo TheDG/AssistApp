@@ -5,5 +5,10 @@ class WelcomeController < ApplicationController
     @allteachers = Teacher.all
   end
 
+  def metrics
+    @teacher = current_teacher
+    @allteachers = Teacher.all
+  end
+
   def home; end
 end
