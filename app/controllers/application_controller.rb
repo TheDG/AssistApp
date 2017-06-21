@@ -15,7 +15,16 @@ class ApplicationController < ActionController::Base
     if teacher_signed_in?
       super
     else
-      redirect_to welcome_home_path, notice: 'if you want to add a notice'
+      redirect_to welcome_home_path, notice: 'Not a teacher', status: 401
+      ## if you want render 404 page
+      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
+    end
+  end
+
+  def authenticate_admin!
+    if current_teacher.admin == true
+    else
+      redirect_to welcome_home_path, notice: 'Not a teacher', status: 401
       ## if you want render 404 page
       ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end

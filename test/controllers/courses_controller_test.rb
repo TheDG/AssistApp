@@ -1,10 +1,11 @@
 require 'test_helper'
 
+#missing all admin auth test
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @course = courses(:english)
-    @teacher = teachers(:diego)
-    sign_in(@teacher)
+    @admin = teachers(:diego)
+    sign_in(@admin)
   end
 
   test "should get index" do

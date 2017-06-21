@@ -2,19 +2,32 @@ require 'test_helper'
 
 class TeachersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @teacher = teachers(:diego)
+    @teacher = teachers(:jm)
+    @admin = teachers(:diego)
   end
 
-  test "should get index" do
-    sign_in(@teacher)
+  test "admin should get index" do
+    sign_in(@admin)
     get teachers_url
     assert_response :success
   end
 
-  test "should get new" do
+  test "teacher should not get index" do
     sign_in(@teacher)
+    get teachers_url
+    assert_response :unauthorized
+  end
+
+  test "admin should get new" do
+    sign_in(@admin)
     get new_teacher_path
     assert_response :success
+  end
+
+  test "teacher should not get new" do
+    sign_in(@teacher)
+    get new_teacher_path
+    assert_response :unauthorized
   end
 
   test "should create teacher" do
@@ -49,11 +62,18 @@ class TeachersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy teacher" do
-    sign_in(@teacher)
+    sign_in(@admin)
     assert_difference('Teacher.count', -1) do
       delete teacher_url(@teacher)
     end
     assert_redirected_to teachers_url
+  end
+
+  test "should not destroy teacher" do
+    sign_in(@teacher)
+    assert_difference('Teacher.count', 0) do
+      delete teacher_url(@teacher)
+    end
   end
 
   test "should show own students" do

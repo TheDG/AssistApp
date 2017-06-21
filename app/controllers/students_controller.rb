@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy, :generate_qr]
   before_action :authenticate_teacher!
+  before_action :authenticate_admin!, except: [:own_index, :show]
 
 
   def generate_qr

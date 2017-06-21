@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy, :all_qr]
   before_action :authenticate_teacher!
+  before_action :authenticate_admin!, except: [:own_index, :show]
 
   def all_qr
     tmp_path = @course.zip_all_qr

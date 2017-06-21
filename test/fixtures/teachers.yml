@@ -5,6 +5,7 @@ diego:
   last_name: tester
   email: dtest@uc.cl
   rut: 123123123
+  admin: true
   encrypted_password: <%= Devise::Encryptor.digest(Teacher, "12345678") %>
 
 
