@@ -12,7 +12,8 @@ class TeachersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_teacher_registration_path
+    sign_in(@teacher)
+    get new_teacher_path
     assert_response :success
   end
 

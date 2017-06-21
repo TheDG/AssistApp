@@ -1,4 +1,4 @@
-<%= form_with(model: teacher, local: true) do |form| %>
+<%= form_with(model: teacher, local: true) do |f| %>
   <% if teacher.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
@@ -11,23 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :teacher_name %>
-  </div>
+    <div class="field-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name, id: :teacher_last_name %>
-  </div>
+    <div class="field">
+      <%= f.label :rut %><br />
+      <%= f.text_field :rut %>
+    </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :teacher_email %>
-  </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+    </div>
 
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Create Teacher" %>
+    </div>
   </div>
 <% end %>
