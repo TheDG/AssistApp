@@ -71,7 +71,9 @@
                           <a href="#"><i class="fa fa-fw fa-desktop"></i>Configuration</a>
                         </li>
                         <li>
-                          <%= link_to 'Diegos Admin', admin_display_path, class: 'fa fa-fw fa-desktop', method: :get %>
+                          <% if current_teacher.admin == true %>
+                              <%= link_to 'Admin', admin_display_path, class: 'fa fa-fw fa-desktop', method: :get %>
+                          <% end%>
                         </li>
                       </ul>
                     </div>

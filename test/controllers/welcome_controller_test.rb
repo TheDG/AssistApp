@@ -8,11 +8,11 @@ class WelcomeControllerTest < ActionDispatch::IntegrationTest
 
   test "not_logged in cant access index" do
     get root_url
-    assert_response :found
+    assert_response :unauthorized
   end
 
   test "logged in can access index" do
-    sign_in(teachers(:diego))
+    sign_in(teachers(:jm))
     get root_url
     assert_response :success
   end

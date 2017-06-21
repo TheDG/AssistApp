@@ -17,6 +17,7 @@ aux2 = Teacher.create(name: 'Diego',
                       last_name: 'Sinay',
                       email: 'dsinay@uc.cl',
                       rut: '123123-2',
+                      admin: true,
                       password: '123123',
                       password_confirmation: '123123')
 
