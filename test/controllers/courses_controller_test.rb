@@ -50,12 +50,4 @@ class CoursesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to courses_url
   end
 
-  test "should only show course assistance" do
-    get course_url(@course)
-    assigns(:assistance).each do |assist|
-      assert_equal assist.course_id, @course.id
-    end
-
-  end
-
 end

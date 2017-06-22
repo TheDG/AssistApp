@@ -24,13 +24,13 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @assistance = []
+    assistance = []
     aux = Assistance.all
     aux.each do |ass|
-      @assistance << ass if ass.course_id == @course.id
+      assistance << ass if ass.course_id == @course.id
     end
     @dates = []
-    @assistance.each do |ass|
+    assistance.each do |ass|
       @dates << ass.date unless @dates.include?(ass.date)
     end
   end

@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <h1>Course:
-      <% if (@course.subject!=nil)%>
-        <% if (@course.grade!=nil)%>
-          <% if (@course.level!=nil)%>
-            <%= @course.subject + " "+@course.grade+"-"+@course.level%>
-          <%else%>
-            <%= @course.subject + " "+@course.grade%>
-          <%end%>
-        <%else%>
-          <% if (@course.level!=nil)%>
-            <%= @course.subject +" "+@course.level%>
-          <%else%>
-            <%= @course.subject%>
-          <%end%>
-        <%end%>
+<h1>Course:
+  <% if @course.subject!=nil %>
+      <% if @course.grade!=nil %>
+          <% if @course.level!=nil %>
+              <%= @course.subject + ' '+ @course.grade + '-' + @course.level%>
+          <% else %>
+              <%= @course.subject + ' '+ @course.grade%>
+          <% end %>
       <% else %>
-        <% if (@course.grade!=nil)%>
-          <% if (@course.level!=nil)%>
-            <%= @course.grade+"-"+@course.level%>
-          <%else%>
-            <%= @course.grade%>
-          <%end%>
-        <%else%>
-          <% if (@course.level!=nil)%>
-            <%= @course.level%>
-          <%end%>
-        <%end%>
+          <% if @course.level!=nil %>
+              <%= @course.subject + ' ' +@course.level%>
+          <% else %>
+              <%= @course.subject%>
+          <% end %>
       <% end %>
-  </h1>
+  <% else %>
+      <% if @course.grade!=nil %>
+          <% if @course.level!=nil %>
+              <%= @course.grade + '-' + @course.level%>
+          <% else %>
+              <%= @course.grade%>
+          <% end %>
+      <% else %>
+          <% if @course.level!=nil %>
+              <%= @course.level%>
+          <% end %>
+      <% end %>
+  <% end %>
+</h1>
 
 </p>
 <p>
@@ -41,37 +41,43 @@
 
 <table class="basic_table">
   <thead>
-    <tr>
-      <th>Student</th>
-      <th>rut</th>
-      <% @dates.each do |date| %>
+  <tr>
+    <th>Student</th>
+    <th>rut</th>
+    <% @dates.each do |date| %>
         <td><%= date.strftime('%m-%d') %></td>
-      <% end %>
-    </tr>
+    <% end %>
+  </tr>
   </thead>
 
   <tbody>
-    <% @course.students.each do |student| %>
+  <% @course.students.each do |student| %>
       <tr>
         <td>
-          <% if (student.last_name!=nil)%>
-            <%= student.name + " "+student.last_name %>
+          <% if student.last_name != nil%>
+              <%= student.name + ' '+student.last_name %>
           <% else %>
-            <%= student.name %>
+              <%= student.name %>
           <% end %>
         </td>
         <td><%= student.rut %></td>
-        <% @assistance.each do |assistance| %>
-          <% if (assistance.student == student)%>
-            <% if (assistance.attend )%>
-              <td bgcolor="#88ff88">yes</td>
+        <% @dates.each do |date| %>
+            <% aux = false %>
+            <% student.assistances.where(course_id: @course.id).sort_by{|e| e[:date]}.each do |assistance| %>
+                <% if assistance.date.strftime('%m-%d') == date.strftime('%m-%d') %>
+                    <% if assistance.attend %>
+                        <% aux = true %>
+                    <%end%>
+                <% end %>
+            <% end %>
+            <% if aux %>
+                <td bgcolor="#88ff88">yes</td>
             <%else%>
-              <td bgcolor="#ff8888">no</td>
+                <td bgcolor="#ff8888">no</td>
             <%end%>
-          <% end %>
-        <% end %>
+        <%end%>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 </br>
