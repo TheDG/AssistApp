@@ -21,11 +21,11 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                <%= link_to 'AssistApp', root_path, class: "navbar-brand", method: :get %>
-
               </div>
               <!-- Top Menu Items -->
               <ul class="nav navbar-right top-nav">
+                <%= link_to 'AssistApp', root_path, class: "navbar-brand", method: :get %>
+
                 <% if teacher_signed_in? %>
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
