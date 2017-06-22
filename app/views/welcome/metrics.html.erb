@@ -1,0 +1,153 @@
+<div class="card">
+  <div class="card-header" data-background-color="blue">
+    <h2 class="title">titulos</h2>
+  </div>
+  <div class="card-content flex">
+    <div class="left ">
+      <div id="selector_curso" class="styled-select blue rounded">
+        <select id="selectCourse">
+          <option id="0" value="0">Selecciona un curso</option>
+          <% @teacher.courses.each do |course|%>
+            <option id="<%= course.id%>" value="<%= course.id%>"><%= course.subject%> <%=course.grade%>-<%=course.level%></option>
+          <%end%>
+        </select>
+      </div>
+      <button class="btn btn-deep-blue" id="btnCurso">Revisar Curso</button>
+    </div>
+    <div class="right">
+      <div id="selector_alumno"class="styled-select blue rounded">
+        <select id="selectStudent">
+          <option id="0">Selecciona un curso</option>
+          <% @teacher.courses.each do |course|%>
+            <% course.students.each do |student|%>
+              <option id="<%= student.id%>" value="<%= student.id%>"><%=student.name%> <%=student.last_name%> (curso: <%= course.subject%> <%=course.grade%>-<%=course.level%>)</option>
+            <%end%>
+          <%end%>
+        </select>
+      </div>
+      <button class="btn btn-deep-blue" id="btnStudent">Revisar Alumno</button>
+
+    </div>
+  </div>
+</div>
+
+<div class="card m50">
+  <div class="card-header" data-background-color="blue">
+    <h2 class="title" id="titulo">titulos</h2>
+    <h3 class="title" id="subtitulo">subtitulo</h3>
+  </div>
+  <div class="card-content">
+    <div class="chart">
+      <div id="chart_div"></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+$('#btnCurso').click(function () {
+  val= $('#selectCourse').val();
+  if (val!='0'){
+    var configuration ={
+      'course'        : val,
+    };
+    $.ajax({
+      type: "GET",
+      dataType: 'json',
+      contentType: "application/json; charset=utf-8",
+      url: "/welcome/data",
+      data: configuration,
+      success: function (data) {
+        if (data.hasOwnProperty('error')){
+          alert(data["error"]);
+          return;
+        }
+        var yes = data["yes"];
+        var no = data["no"];
+        var fechas = data["dates"];
+        var course = data["course"].name;
+        $("#titulo").text(course);
+        $("#subtitulo").text("asistencia del curso");
+        drawChart(yes,fechas,no,course);
+      }
+    })
+  }
+});
+$('#btnStudent').click(function () {
+  val= $('#selectStudent').val();
+  if (val!='0'){
+    var configuration ={
+      'student'        : val,
+    };
+    $.ajax({
+      type: "GET",
+      dataType: 'json',
+      contentType: "application/json; charset=utf-8",
+      url: "/welcome/student",
+      data: configuration,
+      success: function (data) {
+        if (data.hasOwnProperty('error')){
+          alert(data["error"]);
+          return;
+        }
+
+        /// cada curso tuene en curso[0]=nombre,curso[1]=teachername,curso[2]=go,curso[3]=id
+        var courses = data["courses"];
+        var dates = data["dates"];
+        var student = data["student"];
+        $("#titulo").text(student.name);
+        $("#subtitulo").text(student.rut);
+        drawChartStudent(courses,dates);
+      }
+    })
+  }
+});
+    $(document).load(function() {
+      google.charts.load('current', {'packages':['line']});
+    });
+    google.charts.load('current', {'packages':['line']});
+    function drawChart(positivo,fechas,negativos, nombre_curso) {
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Day');
+      data.addColumn('number', 'Asistentes');
+      data.addColumn('number', 'Ausentes');
+      aux=[]
+      for (var i = 0; i < positivo.length; i++) {
+        aux.push([new Date(fechas[i]), parseInt(positivo[i]),parseInt(negativos[i])]);
+      }
+      data.addRows(aux);
+      var options = {
+        width: 900,
+        height: 400
+      };
+      var chart = new google.charts.Line(document.getElementById('chart_div'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+    function drawChartStudent(courses,dates) {
+      google.charts.load('current', {'packages':['line']});
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Day');
+      for (var i = 0; i < courses.length; i++) {
+        data.addColumn('number', courses[i][0]);
+      }
+      aux=[]
+      for (var i = 0; i < dates.length; i++) {
+        aux2=[new Date(dates[i])];
+        for (var j = 0; j < courses.length; j++) {
+          aux2.push(parseInt(courses[j][2][i]));
+        }
+        aux.push(aux2);
+      }
+      data.addRows(aux);
+      var options = {
+        width: 900,
+        height: 400
+      };
+      var chart = new google.charts.Line(document.getElementById('chart_div'));
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+</script>

@@ -49,6 +49,10 @@ Rails.application.routes.draw do
   post 'admin/add_student3'
   get 'admin/student_courses_index'
 
+  get 'welcome/metrics', to: 'welcome#metrics', as: 'welcome_metrics'
+  get 'welcome/data', to: 'welcome#data', as: 'welcome_data'
+  get 'welcome/student', to: 'welcome#student', as: 'welcome_student'
+
   namespace :api do
     scope :v1 do
       mount_devise_token_auth_for 'Teacher', at: 'auth'
