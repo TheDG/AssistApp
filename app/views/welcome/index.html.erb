@@ -67,15 +67,23 @@
                 <i class="fa fa-comments fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                    <div class="huge">
+                <div class="huge">
+                  <% if last_attendence %>
                       <%= "#{last_attendence.grade}-#{last_attendence.subject}-#{last_attendence.level}"%>
-                    </div>
+                  <% else %>
+                      <%= 0 %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
           <a href="#">
             <div class="panel-footer">
-              <span class="pull-left"><%= link_to 'Last Reported Attendance',last_attendence%></span>
+              <% if last_attendence %>
+                  <span class="pull-left"><%= link_to 'Last Reported Attendance',last_attendence%></span>
+              <% else %>
+                  No courses with registered attendences
+              <% end %>
               <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
               <div class="clearfix"></div>
             </div>
