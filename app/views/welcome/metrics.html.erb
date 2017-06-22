@@ -1,23 +1,23 @@
 <div class="card">
   <div class="card-header" data-background-color="blue">
-    <h2 class="title">titulos</h2>
+    <h2 class="title">Choose an Option</h2>
   </div>
   <div class="card-content flex">
     <div class="left ">
       <div id="selector_curso" class="styled-select blue rounded">
         <select id="selectCourse">
-          <option id="0" value="0">Selecciona un curso</option>
+          <option id="0" value="0">Select Course</option>
           <% @teacher.courses.each do |course|%>
             <option id="<%= course.id%>" value="<%= course.id%>"><%= course.subject%> <%=course.grade%>-<%=course.level%></option>
           <%end%>
         </select>
       </div>
-      <button class="btn btn-deep-blue" id="btnCurso">Revisar Curso</button>
+      <button class="btn btn-deep-blue" id="btnCurso">See Course</button>
     </div>
     <div class="right">
       <div id="selector_alumno"class="styled-select blue rounded">
         <select id="selectStudent">
-          <option id="0">Selecciona un curso</option>
+          <option id="0">Select Student</option>
           <% @teacher.courses.each do |course|%>
             <% course.students.each do |student|%>
               <option id="<%= student.id%>" value="<%= student.id%>"><%=student.name%> <%=student.last_name%> (curso: <%= course.subject%> <%=course.grade%>-<%=course.level%>)</option>
@@ -25,7 +25,7 @@
           <%end%>
         </select>
       </div>
-      <button class="btn btn-deep-blue" id="btnStudent">Revisar Alumno</button>
+      <button class="btn btn-deep-blue" id="btnStudent">See Student</button>
 
     </div>
   </div>
@@ -33,8 +33,8 @@
 
 <div class="card m50">
   <div class="card-header" data-background-color="blue">
-    <h2 class="title" id="titulo">titulos</h2>
-    <h3 class="title" id="subtitulo">subtitulo</h3>
+    <h2 class="title" id="titulo">Chart</h2>
+    <h3 class="title" id="subtitulo">Choose an option to see the chart</h3>
   </div>
   <div class="card-content">
     <div class="chart">
@@ -113,8 +113,8 @@ $('#btnStudent').click(function () {
     function drawChart(positivo,fechas,negativos, nombre_curso) {
       var data = new google.visualization.DataTable();
       data.addColumn('date', 'Day');
-      data.addColumn('number', 'Asistentes');
-      data.addColumn('number', 'Ausentes');
+      data.addColumn('number', 'Present Students');
+      data.addColumn('number', 'Abstent Students');
       aux=[]
       for (var i = 0; i < positivo.length; i++) {
         aux.push([new Date(fechas[i]), parseInt(positivo[i]),parseInt(negativos[i])]);
