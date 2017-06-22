@@ -8,7 +8,7 @@ class Course < ApplicationRecord
 
   def zip_all_qr
     tmp_path = Rails.root.join('tmp', "#{grade}-#{subject}-#{level}.zip")
-    File.delete(tmp_path)
+    File.delete(tmp_path) if File.exist?(tmp_path)
     Zip::File.open(tmp_path, Zip::File::CREATE) do |z|
       students.map.uniq.each do |stud|
         z.add("#{stud.rut}.png", stud.gen_qr[1])
