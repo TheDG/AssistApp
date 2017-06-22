@@ -1,0 +1,112 @@
+<div class="container-fluid">
+  <div class="container flex">
+    <div class="left ">
+      <div id="selector_curso" class="styled-select blue rounded">
+        <select id="selectCourse">
+          <option id="0" value="0">Selecciona un curso</option>
+          <% @teacher.courses.each do |course|%>
+            <option id="<%= course.id%>" value="<%= course.id%>"><%= course.subject%> <%=course.grade%>-<%=course.level%></option>
+          <%end%>
+        </select>
+      </div>
+      <button class="btn btn-deep-blue" id="btnCurso">Revisar Curso</button>
+    </div>
+    <div class="right">
+      <div id="selector_alumno"class="styled-select blue rounded">
+        <select>
+          <option id="0">Selecciona un curso</option>
+          <% @teacher.courses.each do |course|%>
+            <% course.students.each do |student|%>
+              <option id="<%= student.id%>"><%=student.name%> curso: <%= course.subject%> <%=course.grade%>-<%=course.level%></option>
+            <%end%>
+          <%end%>
+        </select>
+      </div>
+      <button class="btn btn-deep-blue" id="btnStudent">Revisar Alumno</button>
+
+    </div>
+  </div>
+</div>
+<div class="container chart">
+  <div class="header-div">
+    <h2>Titulo</h2>
+    <h3>subtitulo</h3>
+  </div>
+  <div class="chart">
+    <div id="chart_div"></div>
+  </div>
+</div>
+
+
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+$('#btnCurso').click(function () {
+  val= $('#selectCourse').val();
+  alert (val);
+  if (val!='0'){
+    alert ('yeees!?');
+    var configuration ={
+      'course'        : val,
+    };
+    $.ajax({
+      type: "GET",
+      dataType: 'json',
+      contentType: "application/json; charset=utf-8",
+      url: "/welcome/data",
+      data: configuration,
+      success: function (data) {
+        if (data.hasOwnProperty('error')){
+          alert(data["error"]);
+          return;
+        }
+
+        var yes = data["yes"];
+        var no = data["no"];
+        alert(yes);
+        var fechas = data["dates"];
+        var course = data["course"].name;
+        alert(fechas);
+        alert(no);
+        alert(course);
+
+        drawChart(yes,fechas,no,course);
+      }
+    })
+  }
+});
+
+
+
+//funcion dibuja grefico
+    google.charts.load('current', {'packages':['line']});
+
+    function drawChart(positivo,fechas,negativos, nombre_curso) {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('date', 'Day');
+      data.addColumn('number', 'Asistentes');
+      data.addColumn('number', 'Ausentes');
+      aux=[]
+      for (var i = 0; i < positivo.length; i++) {
+        aux.push([new Date(fechas[i]), parseInt(positivo[i]),parseInt(negativos[i])]);
+      }
+      data.addRows(aux);
+
+      var options = {
+        chart: {
+          title: 'Box Office Earnings in First Two Weeks of Opening',
+          subtitle: 'in millions of dollars (USD)'
+        },
+        width: 900,
+        height: 500
+      };
+
+      var chart = new google.charts.Line(document.getElementById('chart_div'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+</script>

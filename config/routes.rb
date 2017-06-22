@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   post 'admin/add_student3'
   get 'admin/student_courses_index'
   get 'welcome/metrics', to: 'welcome#metrics', as: 'welcome_metrics'
+  get 'welcome/data', to: 'welcome#data', as: 'welcome_data'
 
   namespace :api do
     scope :v1 do
