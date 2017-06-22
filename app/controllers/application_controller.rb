@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  private
+
+  # Overwriting the sign_out redirect path method
+  def after_sign_out_path_for(teacher)
+    welcome_home_path
+  end
+
   protected
 
   def configure_permitted_parameters
