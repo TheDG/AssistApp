@@ -42,8 +42,8 @@
   <tr>
     <th>Student</th>
     <th>rut</th>
-    <% @dates.each do |date| %>
-        <td><%= date.strftime('%m-%d') %></td>
+    <% @dates.sort_by {|date| date}.each do |date| %>
+        <td><%= date.strftime('%d-%m') %></td>
     <% end %>
   </tr>
   </thead>
@@ -69,9 +69,17 @@
                 <% end %>
             <% end %>
             <% if aux %>
-                <td bgcolor="#88ff88">yes</td>
+                <td bgcolor="#88ff88" data-assist_id = "<%= find_assit(date, student.id, @course.id) %>"
+                    id = "<%= find_assit(date, student.id, @course.id) %>"
+                    class='change_assit'>
+                  yes
+                </td>
             <%else%>
-                <td bgcolor="#ff8888">no</td>
+                <td bgcolor="#ff8888" data-assist_id = "<%= find_assit(date, student.id, @course.id) %>"
+                    id = "<%= find_assit(date, student.id, @course.id) %>"
+                class='change_assit'>
+                  no
+                </td>
             <%end%>
         <%end%>
       </tr>

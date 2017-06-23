@@ -38,7 +38,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :assistances, only: [:index]
+  resources :assistances, only: [:index] do
+    member do
+      put :change_assist
+    end
+  end
 
   get 'welcome/index'
 
