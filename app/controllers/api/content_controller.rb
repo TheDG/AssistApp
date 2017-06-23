@@ -14,6 +14,7 @@ module Api
       # puts current_teacher
       # puts Student.where(rut: params[:rut]).first
       # puts Time.parse(params[:date])
+      puts Time.parse(params[:date])
       aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
                              date: Time.parse(params[:date]), course_id: params[:course_id],
                              attend: true).first
