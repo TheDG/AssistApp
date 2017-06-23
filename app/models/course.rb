@@ -17,4 +17,40 @@ class Course < ApplicationRecord
     tmp_path
   end
 
+  def export(dates)
+    attributes = %w{name last_name rut}
+    dates = dates.sort_by {|date| date}
+    dates.each do |date|
+      attributes << date.strftime('%d-%m-%y')
+    end
+    @csv = CSV.generate(headers: true) do |csv|
+      csv << attributes
+      students.each do |student|
+        aux_array = []
+        aux_student = []
+        aux_student << student.name
+        aux_student << student.last_name
+        aux_student << student.rut
+        aux_array << aux_student
+        dates.each do |date|
+          aux = false
+          student.assistances.where(course_id: id).sort_by{|e| e[:date]}.each do |assistance|
+            if assistance.date.strftime('%m-%d') == date.strftime('%m-%d')
+              if assistance.attend
+                aux = true
+              end
+            end
+          end
+          if aux
+            aux_array << 'atendio'
+          else
+            aux_array << 'ausente'
+          end
+        end
+        csv << aux_array
+      end
+      @csv
+    end
+  end
+
 end

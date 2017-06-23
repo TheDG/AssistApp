@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
     member do
       get :all_qr
+      post :export
     end
     resources :students
     resources :assistances, only: [:index]

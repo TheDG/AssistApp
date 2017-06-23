@@ -1,7 +1,21 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy, :all_qr]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :all_qr, :export]
   before_action :authenticate_teacher!
   before_action :authenticate_admin!, except: [:own_index, :show]
+
+
+  def export
+    assistance = []
+    aux = Assistance.all
+    aux.each do |ass|
+      assistance << ass if ass.course_id == @course.id
+    end
+    @dates = []
+    assistance.each do |ass|
+      @dates << ass.date unless @dates.include?(ass.date)
+    end
+    send_data @course.export(@dates)
+  end
 
   def all_qr
     tmp_path = @course.zip_all_qr
