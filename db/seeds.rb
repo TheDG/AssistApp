@@ -41,7 +41,7 @@ course1 = Course.create(teacher_id: aux.id,
                         subject: 'Math',
                         grade: '8',
                         level: 'b')
-                        
+
 course4 = Course.create(teacher_id: aux3.id,
                         subject: 'Chemistry',
                         grade: '8',
@@ -57,12 +57,13 @@ course5 = Course.create(teacher_id: aux4.id,
 students = []
 
 nombres = %w[juan pedro diego jose josefina raul gabriel maria juan sofia]
+last_names = %w[hais cortez besa drago gana sullivan wulf rivas ovalle navarro]
 
 ruts = ['23556256-3', '23347118-1', '23765349-8', '23257839-8',
         '23226899-2', '23468343-3', '23764165-6', '23158042-6', '23942584-7', '23984934-3']
 
 0.upto(4) do |i|
-  stuaux = Student.create(name: nombres[i], rut: ruts[i])
+  stuaux = Student.create(name: nombres[i], rut: ruts[i], last_name: last_names[i])
   course1.students << stuaux
   course1.save
   course5.students << stuaux
