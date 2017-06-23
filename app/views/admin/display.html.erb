@@ -1,93 +1,85 @@
 
-<section class="page-title page-title-4 bg-secondary">
-    <div class="container">
+<div class="card center">
+  <div class="card-header" data-background-color="blue">
+    <h2 class="title">Admin Panel</h2>
+    <h3 class="title">options</h3>
+  </div>
+  <div class="card-content ">
+    <section>
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="uppercase mb0"> Options</h1>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 text">
+          <h4 class="uppercase mb16"><a><%= link_to 'Add Teachers to Course', admin_add_teacher_path, class: "btn btn-deep-blue big-white"%></a></h4>
           <br>
-          <p class="lead mb64 titlehide">
-            Decide que hacer
-          </p>
+
         </div>
       </div>
-      <!--end of row-->
-    </div>
-    <!--end of container-->
-  </section>
+    </section>
 
-  <section>
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-11 text">
-        <h4 class="uppercase mb16"><a><%= link_to 'Agregar Profes a cursos', admin_add_teacher_path%></a></h4>
-        <br>
+    <section>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 text">
+          <h4 class="uppercase mb16"><a><%= link_to 'Add Student to Course', admin_add_student_path, class: "btn btn-deep-blue big-white"%></a></h4>
+          <br>
 
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-<section>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11 text">
-      <h4 class="uppercase mb16"><a><%= link_to 'Agregar Estudiantes a cursos', admin_add_student_path%></a></h4>
-      <br>
+    <section>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 text">
+          <h4 class="uppercase mb16"><a><%= link_to 'View All enrolled students', admin_student_courses_index_path, class: "btn btn-deep-blue big-white"%></a></h4>
+          <br>
 
-    </div>
+        </div>
+      </div>
+    </section>
+    <!--
+    <section>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 text">
+          <h4 class="uppercase mb16"><a><%= link_to 'View assistance', assistances_path%></a></h4>
+          <br>
+
+        </div>
+      </div>
+    </section>
+    -->
+    <section>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 text">
+          <h4 class="uppercase mb16"><a><%= link_to 'View All Courses and assistance', courses_path, class: "btn btn-deep-blue big-white"%></a></h4>
+          <br>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 text">
+          <h4 class="uppercase mb16"><a><%= link_to 'Teachers', teachers_path, class: "btn btn-deep-blue big-white"%></a></h4>
+          <br>
+
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-11 text">
+          <h4 class="uppercase mb16"><a><%= link_to 'Students', students_path, class: "btn btn-deep-blue big-white"%></a></h4>
+          <br>
+
+        </div>
+      </div>
+    </section>
   </div>
-</section>
-
-<section>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11 text">
-      <h4 class="uppercase mb16"><a><%= link_to 'View All enrolled students', admin_student_courses_index_path%></a></h4>
-      <br>
-
-    </div>
-  </div>
-</section>
-<!--
-<section>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11 text">
-      <h4 class="uppercase mb16"><a><%= link_to 'View assistance', assistances_path%></a></h4>
-      <br>
-
-    </div>
-  </div>
-</section>
--->
-<section>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11 text">
-      <h4 class="uppercase mb16"><a><%= link_to 'View All Courses and assistance', courses_path%></a></h4>
-      <br>
-
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11 text">
-      <h4 class="uppercase mb16"><a><%= link_to 'Teachers', teachers_path%></a></h4>
-      <br>
-
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="row">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11 text">
-      <h4 class="uppercase mb16"><a><%= link_to 'Students', students_path%></a></h4>
-      <br>
-
-    </div>
-  </div>
-</section>
+</div>

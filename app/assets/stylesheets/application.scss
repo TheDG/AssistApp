@@ -8644,11 +8644,19 @@
   text-align:center;
 }
 .btn.btn-deep-blue {
-  display: block;
   margin-left: 20px;
 }
 .btn.btn-deep-blue{
    background-color:  #7ec1ea;
+ }
+ .btn.btn-deep-blue.big-white{
+  font-size: 20px;
+  color: #000;
+  display: inline;
+  width: 200px;
+ }
+ .btn.btn-deep-blue.big-white.no-margin{
+   margin: 0px;
  }
  .card {
    margin-top: 100px;
@@ -8686,3 +8694,12 @@
 }
 .blue select   { color: #000; }
 .blue    { background-color: #3b8ec2; }
+
+.field text {
+    font-family: inherit;
+    font-size: 20px;
+    line-height: inherit;
+}
+.btn.btn-deep-blue.big-white:hover{
+ background-color:  #b9d6e8;
+}

@@ -9,8 +9,7 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <h1>Teachers</h1>
-      <%= link_to 'New Teacher', new_teacher_path %>
-      <table class="table table-hover">
+      <table class="table table-hover center">
         <thead>
         <tr>
           <th>Name</th>
@@ -36,14 +35,15 @@
         </tbody>
       </table>
     </div>
-    <div>
+    <%= link_to 'New Teacher', new_teacher_path, class:'btn btn-deep-blue big-white' %>
+    <div style="margin-left: 20px;">
       <h1>Import teachers csv file</h1>
       <%= form_tag import_teachers_path, multipart:true do %>
           <%=file_field_tag :file%>
           <%=submit_tag "Import CSV", class:'btn-success'%>
       <% end %>
     </div>
-    <div>
+    <div  style="margin-left: 20px;">
       <h1>Export teachers csv file</h1>
       <%= button_to "Export Teacher CSV", "teachers.csv", method: :get, class:'btn-success'%>
     </div>

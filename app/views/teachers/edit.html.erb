@@ -1,6 +1,11 @@
-<h1>Editing Teacher</h1>
+<div class="card center">
+  <div class="card-header" data-background-color="blue">
+    <h2 class="title">Editing Teacher</h2>
+  </div>
+  <div class="card-content flex">
+    <%= render 'form', teacher: @teacher %>
 
-<%= render 'form', teacher: @teacher %>
-
-<%= link_to 'Show', @teacher %> |
-<%= link_to 'Back', teachers_path %>
+    <%= link_to 'Show', @teacher %> |
+    <%= link_to 'Back', teachers_path %>
+  </div>
+</div>
