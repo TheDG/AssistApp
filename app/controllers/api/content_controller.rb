@@ -16,9 +16,21 @@ module Api
       # puts Time.parse(params[:date])
       aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
                              date: Time.parse(params[:date]), course_id: params[:course_id],
-                             attend: true).first_or_create(student_id: Student.where(rut: params[:rut]).first.id,
-                                                           date: Time.parse(params[:date]).to_date,
-                                                           attend: true, course_id: params[:course_id])
+                             attend: true).first
+      unless aux
+        aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
+                               date: Time.parse(params[:date]), course_id: params[:course_id],
+                               attend: false).first
+        if aux
+          aux.attend = true
+          aux.save
+        else
+          aux = Assistance.create(student_id: Student.where(rut: params[:rut]).first.id,
+                          date: Time.parse(params[:date]).to_date,
+                          attend: true, course_id: params[:course_id])
+          aux.save
+        end
+      end
       render json: aux
     end
 
