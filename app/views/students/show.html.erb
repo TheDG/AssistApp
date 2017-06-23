@@ -1,47 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <% if (@student.last_name!=nil)%>
-    <%= @student.name + " "+@student.last_name %>
-  <% else %>
-    <%= @student.name %>
-  <% end %>
-</p>
-
-  <h1><strong>Assitence:</strong></h1>
-
-
-  <% @student.courses.each do |course| %>
-    <h2><strong>Course: <%= course.subject+" "+course.grade+"-"+course.level%></strong></h2>
-    <table class="basic_table">
-      <thead>
-        <tr>
-          <% @student.assistances.each do |ass| %>
-            <%if (ass.course_id==course.id)%>
-              <td><%= ass.date.strftime('%m-%d') %></td>
-            <% end %>
-          <%end%>
-        </tr>
-      </thead>
-
-      <tbody>
-          <tr>
-            <% @student.assistances.each do |ass| %>
-              <%if (ass.course_id==course.id)%>
-                <% if (ass.attend )%>
-                  <td bgcolor="#88ff88">yes</td>
-                <% else %>
-                  <td bgcolor="#ff8888">no</td>
+<div class="card center">
+  <div class="card-header" data-background-color="blue">
+    <h2 class="title">
+      <% if (@student.last_name!=nil)%>
+        <%= @student.name + " "+@student.last_name %>
+      <% else %>
+        <%= @student.name %>
+      <% end %></h2>
+  </div>
+  <div class="card-content"
+      <h1><strong>Assitence:</strong></h1>
+      <% @student.courses.each do |course| %>
+        <h2><strong>Course: <%= course.subject+" "+course.grade+"-"+course.level%></strong></h2>
+        <table class="basic_table">
+          <thead>
+            <tr>
+              <% @student.assistances.each do |ass| %>
+                <%if (ass.course_id==course.id)%>
+                  <td><%= ass.date.strftime('%m-%d') %></td>
                 <% end %>
-              <% end %>
-            <%end%>
-          </tr>
-      </tbody>
-    </table>
-  <%end%>
+              <%end%>
+            </tr>
+          </thead>
 
- <br/>
+          <tbody>
+              <tr>
+                <% @student.assistances.each do |ass| %>
+                  <%if (ass.course_id==course.id)%>
+                    <% if (ass.attend )%>
+                      <td bgcolor="#88ff88">yes</td>
+                    <% else %>
+                      <td bgcolor="#ff8888">no</td>
+                    <% end %>
+                  <% end %>
+                <%end%>
+              </tr>
+          </tbody>
+        </table>
+      <%end%>
 
-<!--<%= link_to 'Edit', edit_student_path(@student),class:'blue_btn' %> |-->
-<%= link_to 'Back', admin_student_courses_index_path,class:'blue_btn' %>
+     <br/>
+
+    <!--<%= link_to 'Edit', edit_student_path(@student),class:'blue_btn' %> |-->
+    <%= link_to 'Back', admin_student_courses_index_path,class:'blue_btn' %>
+  </div>
+</div>

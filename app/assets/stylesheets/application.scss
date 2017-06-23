@@ -8630,19 +8630,21 @@
 }
 
 @media only screen and (min-width: 800px) {
-.flex{
-  display: flex;
- }
-.right{
-  flex: 1;
-  margin-left: 3%;
-  text-align:center;
+  .flex{
+    display: flex;
+   }
+  .right{
+    flex: 1;
+    margin-left: 3%;
+    text-align:center;
+  }
+  .left{
+    flex: 0 0 45%;
+    margin-right: 2%;
+    text-align:center;
+  }
 }
-.left{
-  flex: 0 0 45%;
-  margin-right: 2%;
-  text-align:center;
-}
+
 .btn.btn-deep-blue {
   margin-left: 20px;
 }
@@ -8661,7 +8663,6 @@
  .card {
    margin-top: 100px;
  }
-}
 .styled-select {
    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
    height: 29px;
