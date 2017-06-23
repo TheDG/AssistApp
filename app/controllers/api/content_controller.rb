@@ -15,7 +15,7 @@ module Api
       # puts Student.where(rut: params[:rut]).first
       # puts Time.parse(params[:date])
       send_time = Time.parse(params[:date])
-      time = Time.new(params[send_time.year, send_time.mon, send_time.mday, 5)
+      time = Time.new(send_time.year, send_time.mon, send_time.mday, 5)
       aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
                              date: time, attend: true).first
       unless aux
