@@ -65,9 +65,6 @@
                           <%= link_to 'Metrics', welcome_metrics_url, class:'fa fa-fw fa-dashboard', method: :get %>
                         </li>
                         <li>
-                          <a href="#"><i class="fa fa-fw fa-desktop"></i>Configuration</a>
-                        </li>
-                        <li>
                           <% if current_teacher.admin == true %>
                               <%= link_to 'Admin', admin_display_path, class: 'fa fa-fw fa-desktop', method: :get %>
                           <% end%>
