@@ -3,12 +3,12 @@ class WelcomeController < ApplicationController
   def index
     @teacher = current_teacher
     @allteachers = Teacher.all
-    @course = Course.first
   end
 
   def metrics
     @teacher = current_teacher
     @allteachers = Teacher.all
+    @allstudents = Student.all
 
   end
 

@@ -1,14 +1,23 @@
 <div class="card">
   <div class="card-header" data-background-color="blue">
-    <h2 class="title">Choose an Option</h2>
+    <h2 class="title">Choose an Option <% if (current_teacher.admin == true) %> (Admin View)<%end%>
+  </h2>
   </div>
   <div class="card-content flex">
     <div class="left ">
       <div id="selector_curso" class="styled-select blue rounded">
         <select id="selectCourse">
           <option id="0" value="0">Select Course</option>
-          <% @teacher.courses.each do |course|%>
-            <option id="<%= course.id%>" value="<%= course.id%>"><%= course.subject%> <%=course.grade%>-<%=course.level%></option>
+          <% if (current_teacher.admin == true) %>
+            <%@allteachers.each do |te|%>
+              <% te.courses.each do |course|%>
+                <option id="<%= course.id%>" value="<%= course.id%>"><%= course.subject%> <%=course.grade%>-<%=course.level%> (teacher: <%=te.name%> <%=te.last_name%> )</option>
+              <%end%>
+            <%end%>
+          <%else%>
+            <% @teacher.courses.each do |course|%>
+              <option id="<%= course.id%>" value="<%= course.id%>"><%= course.subject%> <%=course.grade%>-<%=course.level%></option>
+            <%end%>
           <%end%>
         </select>
       </div>
@@ -18,9 +27,15 @@
       <div id="selector_alumno"class="styled-select blue rounded">
         <select id="selectStudent">
           <option id="0">Select Student</option>
-          <% @teacher.courses.each do |course|%>
-            <% course.students.each do |student|%>
-              <option id="<%= student.id%>" value="<%= student.id%>"><%=student.name%> <%=student.last_name%> (curso: <%= course.subject%> <%=course.grade%>-<%=course.level%>)</option>
+          <% if (current_teacher.admin == true) %>
+            <%@allstudents.each do |student|%>
+            <option id="<%= student.id%>" value="<%= student.id%>"><%=student.name%> <%=student.last_name%> (rut: <%=student.rut%>)</option>
+            <%end%>
+          <%else%>
+            <% @teacher.courses.each do |course|%>
+              <% course.students.each do |student|%>
+                <option id="<%= student.id%>" value="<%= student.id%>"><%=student.name%> <%=student.last_name%> (curso: <%= course.subject%> <%=course.grade%>-<%=course.level%>)</option>
+              <%end%>
             <%end%>
           <%end%>
         </select>
@@ -49,6 +64,7 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+
 $('#btnCurso').click(function () {
   val= $('#selectCourse').val();
   if (val!='0'){
