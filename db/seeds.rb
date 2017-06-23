@@ -22,20 +22,20 @@ aux2 = Teacher.create(name: 'Diego',
                       password_confirmation: '123123')
 
 aux3 = Teacher.create(name: 'Juana',
-                       last_name: 'Margara',
-                       email: 'jnmar@uc.cl',
-                       rut: '8532316-5',
-                       admin: true,
-                       password: '123123',
-                       password_confirmation: '123123')
+                      last_name: 'Margara',
+                      email: 'jnmar@uc.cl',
+                      rut: '8532316-5',
+                      admin: true,
+                      password: '123123',
+                      password_confirmation: '123123')
 
 aux4 = Teacher.create(name: 'Gabriel',
-                        last_name: 'Niai',
-                        email: 'gabrieln@uc.cl',
-                        rut: '10257537-9',
-                        admin: false,
-                        password: '123123',
-                        password_confirmation: '123123')
+                      last_name: 'Niai',
+                      email: 'gabrieln@uc.cl',
+                      rut: '10257537-9',
+                      admin: false,
+                      password: '123123',
+                      password_confirmation: '123123')
 
 course1 = Course.create(teacher_id: aux.id,
                         subject: 'Math',
@@ -87,26 +87,35 @@ end
 
 20.upto(29) do |i|
   0.upto(4) do |j|
-    Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
-                      attend: [true, true, true, false].sample,
-                      student_id: students[j].id,
-                      course_id: course1.id)
-    Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
-                      attend: [true, true, true, false].sample,
-                      student_id: students[j].id,
-                      course_id: course4.id)
-    Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
-                      attend: [true, true, true, false].sample,
-                      student_id: students[j].id,
-                      course_id: course5.id)
+    aux1 = Assistance.new(date: DateTime.new(2017, 5, i, 10, 0, 0),
+                          attend: [true, true, true, false].sample,
+                          student_id: students[j].id,
+                          course_id: course1.id)
+    aux1.save if aux1.attend
+
+    aux2 = Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
+                             attend: [true, true, true, false].sample,
+                             student_id: students[j].id,
+                             course_id: course4.id)
+    aux2.save if aux2.attend
+
+    aux3 = Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
+                             attend: [true, true, true, false].sample,
+                             student_id: students[j].id,
+                             course_id: course5.id)
+    aux3.save if aux3.attend
+
   end
 end
 
 12.upto(20) do |i|
   5.upto(9) do |j|
-    Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
-                      attend: [true, true, true, false].sample,
-                      student_id: students[j].id,
-                      course_id: course2.id)
+    aux4 = Assistance.new(date: DateTime.new(2017, 5, i, 10, 0, 0),
+                   attend: [true, true, true, false].sample,
+                   student_id: students[j].id,
+                   course_id: course2.id)
+    aux4.save if aux4.attend
+
   end
 end
+
