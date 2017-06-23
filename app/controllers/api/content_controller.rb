@@ -14,21 +14,19 @@ module Api
       # puts current_teacher
       # puts Student.where(rut: params[:rut]).first
       # puts Time.parse(params[:date])
-      puts Time.parse(params[:date])
+      time = Time.new(params[:date].year, params[:date].mon, params[:date].mday, 5)
       aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
-                             date: Time.parse(params[:date]), course_id: params[:course_id],
-                             attend: true).first
+                             date: time, attend: true).first
       unless aux
         aux = Assistance.where(student_id: Student.where(rut: params[:rut]).first.id,
-                               date: Time.parse(params[:date]), course_id: params[:course_id],
+                               date: time, course_id: params[:course_id],
                                attend: false).first
         if aux
           aux.attend = true
           aux.save
         else
           aux = Assistance.create(student_id: Student.where(rut: params[:rut]).first.id,
-                          date: Time.parse(params[:date]).to_date,
-                          attend: true, course_id: params[:course_id])
+                          date: time, attend: true, course_id: params[:course_id])
           aux.save
         end
       end
