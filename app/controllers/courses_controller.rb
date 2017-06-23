@@ -5,18 +5,15 @@ class CoursesController < ApplicationController
 
 
   def export
-    assistance = []
+    @assistance = []
+    @assistance = []
     aux = Assistance.all
     aux.each do |ass|
-      assistance << ass if ass.course_id == @course.id
+      @assistance << ass if ass.course_id == @course.id
     end
     @dates = []
-    assistance.each do |ass|
-      aux = true
-      @dates.each do |date|
-        aux = false if date.strftime('%d-%m-%y') == ass.date.strftime('%d-%m-%y')
-      end
-      @dates << ass.date if aux
+    @assistance.each do |ass|
+      @dates << ass.date unless @dates.include?(ass.date)
     end
     send_data @course.export(@dates),
               filename: "#{@course.grade}-#{@course.subject}-#{@course.level}-grades.csv"
@@ -43,18 +40,15 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    assistance = []
+    @assistance = []
+    @assistance = []
     aux = Assistance.all
     aux.each do |ass|
-      assistance << ass if ass.course_id == @course.id
+      @assistance << ass if ass.course_id == @course.id
     end
     @dates = []
-    assistance.each do |ass|
-      aux = true
-      @dates.each do |date|
-        aux = false if date.strftime('%d-%m-%y') == ass.date.strftime('%d-%m-%y')
-      end
-      @dates << ass.date if aux
+    @assistance.each do |ass|
+      @dates << ass.date unless @dates.include?(ass.date)
     end
   end
 
