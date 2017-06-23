@@ -12,9 +12,14 @@ class CoursesController < ApplicationController
     end
     @dates = []
     assistance.each do |ass|
-      @dates << ass.date unless @dates.include?(ass.date)
+      aux = true
+      @dates.each do |date|
+        aux = false if date.strftime('%d-%m-%y') == ass.date.strftime('%d-%m-%y')
+      end
+      @dates << ass.date if aux
     end
-    send_data @course.export(@dates)
+    send_data @course.export(@dates),
+              filename: "#{@course.grade}-#{@course.subject}-#{@course.level}-grades.csv"
   end
 
   def all_qr
@@ -45,7 +50,11 @@ class CoursesController < ApplicationController
     end
     @dates = []
     assistance.each do |ass|
-      @dates << ass.date unless @dates.include?(ass.date)
+      aux = true
+      @dates.each do |date|
+        aux = false if date.strftime('%d-%m-%y') == ass.date.strftime('%d-%m-%y')
+      end
+      @dates << ass.date if aux
     end
   end
 

@@ -27,11 +27,9 @@ class Course < ApplicationRecord
       csv << attributes
       students.each do |student|
         aux_array = []
-        aux_student = []
-        aux_student << student.name
-        aux_student << student.last_name
-        aux_student << student.rut
-        aux_array << aux_student
+        aux_array << student.name
+        aux_array << student.last_name
+        aux_array << student.rut
         dates.each do |date|
           aux = false
           student.assistances.where(course_id: id).sort_by{|e| e[:date]}.each do |assistance|

@@ -10,10 +10,13 @@ module CoursesHelper
     course_aux
   end
 
-  def find_assit(date, student_id, course_id)
-    aux = Assistance.where(date: date, student_id: student_id, course_id: course_id).first
+  def find_assist(date, student_id, course_id)
+    aux = Assistance.where(student_id: student_id, course_id: course_id)
+    aux = aux.where('date BETWEEN ? AND ?', date.beginning_of_day,
+                    date.end_of_day).first
     unless aux
-      aux = Assistance.create(date: date, student_id: student_id, course_id: course_id, attend: false)
+      aux = Assistance.create(date: date, student_id: student_id,
+                              course_id: course_id, attend: false)
       puts date
     end
     aux.id
