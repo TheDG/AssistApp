@@ -17,8 +17,8 @@ module CoursesHelper
     unless aux
       aux = Assistance.create(date: date, student_id: student_id,
                               course_id: course_id, attend: false)
-      puts date
     end
+    puts date
     aux.id
   end
 end

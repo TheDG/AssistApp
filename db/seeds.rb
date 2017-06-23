@@ -79,13 +79,13 @@ course2 = Course.create(teacher_id: aux2.id,
                         level: 'HL2')
 
 5.upto(9) do |i|
-  stuaux = Student.create(name: nombres[i], rut: ruts[i])
+  stuaux = Student.create(name: nombres[i], rut: ruts[i], last_name: last_names[i])
   course2.students << stuaux
   course2.save
   students << stuaux
 end
 
-1.upto(10) do |i|
+20.upto(29) do |i|
   0.upto(4) do |j|
     Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
                       attend: [true, true, true, false].sample,
@@ -102,7 +102,7 @@ end
   end
 end
 
-1.upto(10) do |i|
+12.upto(20) do |i|
   5.upto(9) do |j|
     Assistance.create(date: DateTime.new(2017, 5, i, 10, 0, 0),
                       attend: [true, true, true, false].sample,

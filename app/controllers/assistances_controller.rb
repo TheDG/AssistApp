@@ -16,6 +16,7 @@ class AssistancesController < ApplicationController
     end
     @assistance.save
     aux = {attend: @assistance.attend, id: @assistance.id}
+    puts @assistance.date
     render json: aux.as_json
   end
 

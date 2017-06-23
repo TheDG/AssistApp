@@ -59,10 +59,10 @@
           <% end %>
         </td>
         <td><%= student.rut %></td>
-        <% @dates.each do |date| %>
+        <% @dates.sort_by {|date| date}.each do |date| %>
             <% aux = false %>
             <% student.assistances.where(course_id: @course.id).sort_by{|e| e[:date]}.each do |assistance| %>
-                <% if assistance.date.strftime('%m-%d-%y') == date.strftime('%m-%d-%y') %>
+                <% if assistance.date.strftime('%d-%m-%y') == date.strftime('%d-%m-%y') %>
                     <% if assistance.attend %>
                         <% aux = true %>
                     <%end%>
@@ -73,7 +73,7 @@
                     id = "<%= find_assist(date, student.id, @course.id) %>"
                     class='change_assit'>
                   yes
-                </td>
+                      </td>
             <%else%>
                 <td bgcolor="#ff8888" data-assist_id = "<%= find_assist(date, student.id, @course.id) %>"
                     id = "<%= find_assist(date, student.id, @course.id) %>"
